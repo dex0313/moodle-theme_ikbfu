@@ -55,6 +55,9 @@ $THEME->addblockposition = BLOCK_ADDBLOCK_POSITION_FLATNAV;
 // This flag allows to select a theme.
 $THEME->hidefromselector = false;
 
+// On theme boost the “Turn editing on” and “Customise this page” buttons have been replaced by an edit switch in the top navbar. Theme Classic will keep using the old buttons. Child themes can choose to use the edit switch if the theme config.php is using this variable
+$THEME->haseditswitch = true;
+
 // This is the function that returns the SCSS source for the main file in our theme. We override the boost version because          
 // we want to allow presets uploaded to our own theme file area to be selected in the preset list.                                  
 $THEME->scss = function($theme) {                                                                                                   
