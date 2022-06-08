@@ -111,6 +111,7 @@
           width: 450px;
           height: 200px;
           margin: 10px;
+          padding: 0.5rem;
           -webkit-box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.1);
           box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.1);
           background-color: #fff !important;
@@ -141,8 +142,9 @@
               .coursename {
                 h3 {
                   color: #000;
-                  font-weight: 300;
+                  font-weight: 300 !important;
                   font-weight: large !important;
+                  margin-bottom: 0.5rem;
                 }
               }
   
