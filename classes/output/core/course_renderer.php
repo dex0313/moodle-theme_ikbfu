@@ -144,7 +144,7 @@ class course_renderer extends \core_course_renderer {
         $field_id = current($fields)->id;
         $authors_records = $DB->get_records('customfield_data', ['instanceid' => $course_id, 'fieldid' => $field_id]);
         if (empty($authors_records)) {
-            $default_authors = get_string('default_authors', 'theme_ikbfu2021');
+            $default_authors = get_string('default_authors', 'theme_ikbfu');
             return $default_authors;
         } else {
             $authors = current($authors_records);
