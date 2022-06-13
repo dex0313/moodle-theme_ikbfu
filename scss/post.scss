@@ -188,50 +188,65 @@
     }
   }
   
-.general-section-card-details .generalsecactivities .activityinstance img {
-    width: 24px!important;
-    height: 24px!important;
+// .general-section-card-details .generalsecactivities .activityinstance img {
+//     width: 24px!important;
+//     height: 24px!important;
+// }
+
+// .generalsecactivitiescontent {
+//   .aalink {
+//     display: flex;
+//   }
+
+//   text-align: left !important;
+// }
+
+// .generalsecactivitiesmain {
+//   align-items: flex-end;
+// }
+
+// .general-section-card-details .generalsecactivities {
+//   margin: 5px !important;
+// }
+
+// .generalsecactivitiescontent {
+//   padding: 5px !important;
+// }
+
+// .general-section-card-details .generalsecactivities>div:first-child {
+//   padding-top: 12px !important;
+//   padding-left: 12px !important;
+//   padding-bottom: 0 !important;
+//   padding-right: 0 !important;
+// }
+
+// .general-section-card-details .coursemainimagediv, .general-section-card-details .coursemainimage {
+//   height: auto;
+// }
+
+// .modified {
+//   display: none;
+// }
+
+// [data-region="activity-information"] {
+//   margin-top: 10px;
+// }
+
+// .custom-select {
+//   margin-left: 0!important;    
+// }
+
+//Incourse
+
+//Block Discuss Course
+.block_course_discuss {
+  max-width: fit-content;
 }
 
-.generalsecactivitiescontent {
-  .aalink {
-    display: flex;
-  }
-
-  text-align: left !important;
-}
-
-.generalsecactivitiesmain {
-  align-items: flex-end;
-}
-
-.general-section-card-details .generalsecactivities {
-  margin: 5px !important;
-}
-
-.generalsecactivitiescontent {
-  padding: 5px !important;
-}
-
-.general-section-card-details .generalsecactivities>div:first-child {
-  padding-top: 12px !important;
-  padding-left: 12px !important;
-  padding-bottom: 0 !important;
-  padding-right: 0 !important;
-}
-
-.general-section-card-details .coursemainimagediv, .general-section-card-details .coursemainimage {
-  height: auto;
-}
-
-.modified {
-  display: none;
-}
-
-[data-region="activity-information"] {
-  margin-top: 10px;
-}
-
+//Bottom menu selector
 .custom-select {
-  margin-left: 0!important;    
+  width: 95%;
+}
+#region-main {
+  overflow-x: none;
 }
