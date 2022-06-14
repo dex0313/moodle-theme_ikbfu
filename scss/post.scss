@@ -145,12 +145,32 @@
               justify-content: space-between;
   
               .coursename {
-                h3 {
+              
                   color: #000;
                   font-weight: 300 !important;
                   font-weight: large !important;
                   margin-bottom: 0.5rem;
-                }
+
+                  grid-area: title;
+    justify-self: flex-start;
+    margin: 2px 0 8px;
+    --link-color: #222;
+    --link-line: underline;
+    --link-hover-color: #222;
+    --link-hover-line-color: #222;
+    --link-active-color: #222;
+    --link-active-line-color: #222;
+    --link-disabled-color: rgba(34, 34, 34, 0.5);
+    --link-line-color: transparent;
+    --link-line-offset: .1em;
+    font-size: 16px;
+    line-height: 1.25;
+    letter-spacing: normal;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+
+                
               }
   
               .ikbfu2021-teachers {

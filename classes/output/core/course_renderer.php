@@ -85,7 +85,7 @@ class course_renderer extends \core_course_renderer {
                 $content .= html_writer::start_tag('div', array('class' => 'ikbfu2021-info'));
                     $content .= html_writer::start_tag('div', array('class' => 'ikbfu2021-row')); 
                         //$content .= $this->course_name($chelper, $course);
-                        $content .= html_writer::tag('h3', $coursename, array('class' => 'coursename'));
+                        $content .= html_writer::tag('div', $coursename, array('class' => 'coursename'));
 
                         $content .= html_writer::start_tag('div', ['class' => 'moreinfo']);
                         if ($chelper->get_show_courses() < self::COURSECAT_SHOW_COURSES_EXPANDED) {
