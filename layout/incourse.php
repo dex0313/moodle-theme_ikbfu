@@ -75,4 +75,4 @@ $templatecontext = [
     'addblockbutton' => $addblockbutton,
 ];
 
-echo $OUTPUT->render_from_template('theme_ikbfu/columns2', $templatecontext);
+echo $OUTPUT->render_from_template('theme_ikbfu/incourse', $templatecontext);
