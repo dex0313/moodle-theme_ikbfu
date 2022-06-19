@@ -87,18 +87,18 @@ class course_renderer extends \core_course_renderer {
                         //$content .= $this->course_name($chelper, $course);
                         $content .= html_writer::tag('div', $coursename, array('class' => 'coursename'));
 
-                        $content .= html_writer::start_tag('div', ['class' => 'moreinfo']);
-                        if ($chelper->get_show_courses() < self::COURSECAT_SHOW_COURSES_EXPANDED) {
-                            if ($course->has_summary() || $course->has_course_contacts() || $course->has_course_overviewfiles()
-                                || $course->has_custom_fields()) {
-                                $url = new moodle_url('/course/info.php', ['id' => $course->id]);
-                                $image = $this->output->pix_icon('i/info', $this->strings->summary);
-                                $content .= html_writer::link($url, $image, ['title' => $this->strings->summary]);
-                                // Make sure JS file to expand course content is included.
-                                $this->coursecat_include_js();
-                            }
-                        }
-                        $content .= html_writer::end_tag('div');
+                        // $content .= html_writer::start_tag('div', ['class' => 'moreinfo']);
+                        // if ($chelper->get_show_courses() < self::COURSECAT_SHOW_COURSES_EXPANDED) {
+                        //     if ($course->has_summary() || $course->has_course_contacts() || $course->has_course_overviewfiles()
+                        //         || $course->has_custom_fields()) {
+                        //         $url = new moodle_url('/course/info.php', ['id' => $course->id]);
+                        //         $image = $this->output->pix_icon('i/info', $this->strings->summary);
+                        //         $content .= html_writer::link($url, $image, ['title' => $this->strings->summary]);
+                        //         // Make sure JS file to expand course content is included.
+                        //         $this->coursecat_include_js();
+                        //     }
+                        // }
+                        // $content .= html_writer::end_tag('div');
 
                         $content .= $this->course_overview_files($course);
                     $content .= html_writer::end_tag('div');
