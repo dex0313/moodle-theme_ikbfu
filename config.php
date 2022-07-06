@@ -85,9 +85,9 @@ $THEME->layouts = [
         ),
     ),
     // Part of course, typical for modules - default page layout if $cm specified in require_login().
-    // 'incourse' => array(
-    //     'file' => 'incourse.php',
-    //     'regions' => array('side-pre', 'side-post'),
-    //     'defaultregion' => 'side-pre',
-    // ),
+    'incourse' => array(
+        'file' => 'incourse.php',
+        'regions' => array('side-pre', 'side-post'),
+        'defaultregion' => 'side-pre',
+    )
 ];
