@@ -58,7 +58,7 @@ class course_renderer extends \core_course_renderer {
         }
 
         $course_rating = self::get_course_rating($course->id);
-
+        $course_rating_new = self::get_course_rating_new($course->id);
 
 
         // .coursebox
@@ -110,8 +110,11 @@ class course_renderer extends \core_course_renderer {
                     $content .= html_writer::end_tag('div');
                     
                     $content .= html_writer::start_tag('div', array('class' => 'ikbfu2021-row')); 
-                    if ($course_rating != 0) {
-                        $content .= html_writer::tag('span', '&#9733; ' . number_format($course_rating, 2), ['class' => 'ikbfu2021-course-card-footer']);
+                    // if ($course_rating != 0) {
+                    //     $content .= html_writer::tag('span', '&#9733; ' . number_format($course_rating, 2), ['class' => 'ikbfu2021-course-card-footer']);
+                    // }
+                    if ($course_rating_new != 0) {
+                        $content .= html_writer::tag('span', '&#9733; ' . number_format($course_rating_new, 2), ['class' => 'ikbfu2021-course-card-footer']);
                     }
                     $content .= html_writer::end_tag('div');               
                     
@@ -134,6 +137,17 @@ class course_renderer extends \core_course_renderer {
 
         $rating_sum   = array_reduce($ratings, function($carry, $item) {return $carry + $item->rating;}, 0);
         $rating       = $rating_sum / $rating_count;
+
+        return $rating;
+    }
+
+    private static function get_course_rating_new(string $course_id) : float {
+        global $DB;
+        $rating = $DB->get_field('tool_courserating_summary', 'avgrating', ['courseid'=> $course_id] );
+
+        if ($rating == 0) {
+            return 0;
+        }
 
         return $rating;
     }
