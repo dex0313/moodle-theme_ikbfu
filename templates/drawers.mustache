@@ -15,9 +15,9 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_ikbfu/incourse
+    @template theme_boost/drawers
 
-    IKBFU incourse template.
+    Boost drawer template.
 
     Context variables required for this template:
     * sitename - The name of the site
@@ -71,7 +71,24 @@
             {{$closebuttontext}}{{#str}}closecourseindex, core{{/str}}{{/closebuttontext}}
         {{/ theme_boost/drawer}}
     {{/courseindex}}
-
+    {{#hasblocks}}
+        {{< theme_boost/drawer }}
+            {{$id}}theme_boost-drawers-blocks{{/id}}
+            {{$drawerclasses}}drawer drawer-right{{#blockdraweropen}} show{{/blockdraweropen}}{{/drawerclasses}}
+            {{$drawercontent}}
+                <section class="d-print-none" aria-label="{{#str}}blocks{{/str}}">
+                    {{{ addblockbutton }}}
+                    {{{ sidepreblocks }}}
+                </section>
+            {{/drawercontent}}
+            {{$drawerpreferencename}}drawer-open-block{{/drawerpreferencename}}
+            {{$forceopen}}{{#forceblockdraweropen}}1{{/forceblockdraweropen}}{{/forceopen}}
+            {{$drawerstate}}show-drawer-right{{/drawerstate}}
+            {{$tooltipplacement}}left{{/tooltipplacement}}
+            {{$drawercloseonresize}}1{{/drawercloseonresize}}
+            {{$closebuttontext}}{{#str}}closeblockdrawer, core{{/str}}{{/closebuttontext}}
+        {{/ theme_boost/drawer}}
+    {{/hasblocks}}
     <div id="page" data-region="mainpage" data-usertour="scroller" class="drawers {{#courseindexopen}}show-drawer-left{{/courseindexopen}} {{#blockdraweropen}}show-drawer-right{{/blockdraweropen}} drag-container">
         <div id="topofscroll" class="main-inner">
             <div class="drawer-toggles d-flex">
@@ -91,7 +108,23 @@
                         </button>
                     </div>
                 {{/courseindex}}
-             
+                {{#hasblocks}}
+                    <div class="drawer-toggler drawer-right-toggle ml-auto d-print-none">
+                        <button
+                            class="btn icon-no-margin"
+                            data-toggler="drawers"
+                            data-action="toggle"
+                            data-target="theme_boost-drawers-blocks"
+                            data-toggle="tooltip"
+                            data-placement="right"
+                            title="{{#str}}opendrawerblocks, core{{/str}}"
+                        >
+                            <span class="sr-only">{{#str}}opendrawerblocks, core{{/str}}</span>
+                            <span class="dir-rtl-hide">{{#pix}}t/blocks_drawer, core{{/pix}}</span>
+                            <span class="dir-ltr-hide">{{#pix}}t/blocks_drawer_rtl, core{{/pix}}</span>
+                        </button>
+                    </div>
+                {{/hasblocks}}
             </div>
             {{{ output.full_header }}}
             {{#secondarymoremenu}}
@@ -127,18 +160,10 @@
                         {{{ output.course_content_footer }}}
 
                     </section>
-                    {{#hasblocks}}
-                        {{$drawercontent}}
-                            <section class="d-print-none" aria-label="{{#str}}blocks{{/str}}">
-                                {{{ addblockbutton }}}
-                                {{{ sidepreblocks }}}
-                            </section>
-                        {{/drawercontent}}
-                    {{/hasblocks}}
                 </div>
             </div>
         </div>
-            {{> theme_ikbfu/footer }}
+        {{> theme_ikbfu/footer }}
     </div>
     {{{ output.standard_after_main_region_html }}}
 </div>

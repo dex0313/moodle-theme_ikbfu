@@ -89,5 +89,59 @@ $THEME->layouts = [
         'file' => 'incourse.php',
         'regions' => array('side-pre', 'side-post'),
         'defaultregion' => 'side-pre',
+    ),
+    // Most backwards compatible layout without the blocks.
+    'base' => array(
+        'file' => 'drawers.php',
+        'regions' => array(),
+    ),
+    // Standard layout with blocks.
+    'standard' => array(
+        'file' => 'drawers.php',
+        'regions' => array('side-pre'),
+        'defaultregion' => 'side-pre',
+    ),
+    // Main course page.
+    'course' => array(
+        'file' => 'drawers.php',
+        'regions' => array('side-pre'),
+        'defaultregion' => 'side-pre',
+        'options' => array('langmenu' => true),
+    ),
+    'coursecategory' => array(
+        'file' => 'drawers.php',
+        'regions' => array('side-pre'),
+        'defaultregion' => 'side-pre',
+    ),
+    // Server administration scripts.
+    'admin' => array(
+        'file' => 'drawers.php',
+        'regions' => array('side-pre'),
+        'defaultregion' => 'side-pre',
+    ),
+    // My courses page.
+    'mycourses' => array(
+        'file' => 'drawers.php',
+        'regions' => ['side-pre'],
+        'defaultregion' => 'side-pre',
+        'options' => array('nonavbar' => true),
+    ),
+    // My dashboard page.
+    'mydashboard' => array(
+        'file' => 'drawers.php',
+        'regions' => array('side-pre'),
+        'defaultregion' => 'side-pre',
+        'options' => array('nonavbar' => true, 'langmenu' => true),
+    ),
+    // My public page.
+    'mypublic' => array(
+        'file' => 'drawers.php',
+        'regions' => array('side-pre'),
+        'defaultregion' => 'side-pre',
+    ),
+    'login' => array(
+        'file' => 'login.php',
+        'regions' => array(),
+        'options' => array('langmenu' => true),
     )
 ];
