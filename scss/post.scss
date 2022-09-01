@@ -433,7 +433,9 @@
 // // .main-inner {
 // //   max-width: 1088px !important;
 // // }
-
+#page-content {
+  max-width: 1088px;
+}
 .pagelayout-standard #page.drawers .main-inner, body.limitedwidth #page.drawers .main-inner {
   max-width: 1088px;
 }
