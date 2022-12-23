@@ -429,6 +429,10 @@
 }
 .secondary-navigation {
   max-width: 1088px !important;
+  padding: 0 15px 15px;
+  margin: 0 auto;
+
+
 }
 // .main-inner {
 //   max-width: 1088px !important;
@@ -438,10 +442,10 @@
   max-width: 1088px;
 }
 
-.drawer.drawer-left {
-  width: 350px;
-  max-width: 350px;
-}
+// .drawer.drawer-left {
+//   width: 350px;
+//   max-width: 350px;
+// }
 
 .col-md-9{
   max-width: 100%;
