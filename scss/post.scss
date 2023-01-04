@@ -423,32 +423,27 @@
   margin-bottom: auto;
 }
 
-
-// .header-maxwidth {
-//   max-width: 1088px !important;
-// }
-// .secondary-navigation {
-//   max-width: 1088px !important;
-// }
-// // .main-inner {
-// //   max-width: 1088px !important;
-// // }
-// #page-content {
-//   max-width: 1088px;
-//   margin-top: 0px;
-//   margin-right: auto;
-//   margin-bottom: 0px;
-//   margin-left: auto;
-// }
 .pagelayout-standard #page.drawers .main-inner, body.limitedwidth #page.drawers .main-inner {
   max-width: 1088px;
 }
 
-// .drawer.drawer-left {
-//   width: 350px;
-//   max-width: 350px;
-// }
+.pagelayout-standard #page.drawers .main-inner, body.path-mod-hvp #page.drawers .main-inner {
+  max-width: 1088px;
+}
 
-.col-md-9{
+.pagelayout-standard #page.drawers .main-inner, body.path-mod-questionnaire #page.drawers .main-inner {
+  max-width: 1088px;
+}
+
+.header-maxwidth {
+  max-width: none;
+}
+
+.secondary-navigation .navigation .nav-tabs {
+  max-width: none;
+}
+
+
+.col-md-9 {
   max-width: 100%;
 }
