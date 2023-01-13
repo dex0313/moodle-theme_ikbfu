@@ -149,50 +149,8 @@
     </form>
 
     <div class="login-divider"></div>
-    <p>
-    <button class="btn btn-light btn-block" type="button" data-toggle="collapse" data-target="#collapseScos" aria-expanded="false" aria-controls="collapseScos">
-        Моё образование
-    </button>
-    </p>
-
-    <div class="collapse" id="collapseScos">
-        <div><p>Тут сделать какую-нибудь надпись про СЦОС</p></div>
-        {{#hasidentityproviders}}
-            
-            <div class="login-identityproviders">
-                <h2 class="login-heading">{{#str}} potentialidps, auth {{/str}}</h2>
-                {{#identityproviders}}
-                    <a class="btn login-identityprovider-btn btn-block" href="{{url}}">
-                        {{#iconurl}}
-                            <img src="{{iconurl}}" alt="" width="24" height="24"/>
-                        {{/iconurl}}
-                        {{name}}
-                    </a>
-                {{/identityproviders}}
-            </div>
-        {{/hasidentityproviders}}
-    </div>
-
-    {{#hasinstructions}}
-        <div class="login-divider"></div>
-        <div class="login-instructions {{#cansignup}}mb-3{{/cansignup}}">
-            <h2 class="login-heading">{{#str}}firsttime{{/str}}</h2>
-            {{{instructions}}}
-        </div>
-    {{/hasinstructions}}
-    {{#cansignup}}
-        <div class="login-signup">
-            <a class="btn btn-secondary" href="{{signupurl}}">{{#str}}startsignup{{/str}}</a>
-        </div>
-    {{/cansignup}}
-    {{#canloginasguest}}
-        <div class="login-divider"></div>
-    {{/canloginasguest}}
     
-
-    
-
-    <p>
+        <p>
     <button class="btn btn-light btn-block" type="button" data-toggle="collapse" data-target="#collapseFAQ" aria-expanded="false" aria-controls="collapseFAQ">
         Проблемы с входом
     </button>
@@ -213,6 +171,55 @@
 </ul><br></div>
         
     </div>
+    
+    
+    {{#hasinstructions}}
+        <div class="login-divider"></div>
+        <div class="login-instructions {{#cansignup}}mb-3{{/cansignup}}">
+            <h2 class="login-heading">{{#str}}firsttime{{/str}}</h2>
+            {{{instructions}}}
+        </div>
+    {{/hasinstructions}}
+    {{#cansignup}}
+        <div class="login-signup">
+            <a class="btn btn-secondary" href="{{signupurl}}">{{#str}}startsignup{{/str}}</a>
+        </div>
+    {{/cansignup}}
+    {{#canloginasguest}}
+        <div class="login-divider"></div>
+    {{/canloginasguest}}
+    
+
+    <p>
+    <button class="btn btn-light btn-block" type="button" data-toggle="collapse" data-target="#collapseScos" aria-expanded="false" aria-controls="collapseScos">
+        Прочие способы входа
+    </button>
+    </p>
+
+    <div class="collapse" id="collapseScos">
+        <div>
+            <p>Тут сделать какую-нибудь надпись про СЦОС</p>
+            <input type="checkbox"  id="tick" onchange="document.getElementById('terms').disabled = !this.checked;" />
+        </div>
+        {{#hasidentityproviders}}
+            
+            <div class="login-identityproviders">
+                <h2 class="login-heading">{{#str}} potentialidps, auth {{/str}}</h2>
+                {{#identityproviders}}
+                    <a class="btn login-identityprovider-btn btn-block  disabled" href="{{url}}" name="terms" id="terms" >
+                        {{#iconurl}}
+                            <img src="{{iconurl}}" alt="" width="24" height="24"/>
+                        {{/iconurl}}
+                        {{name}}
+                    </a>
+                {{/identityproviders}}
+            </div>
+        {{/hasidentityproviders}}
+    </div>
+
+    
+
+
 <div class="login-divider"></div>
     <div class="d-flex">
         {{#languagemenu}}
