@@ -147,20 +147,37 @@
             <a href="{{forgotpasswordurl}}">{{#str}}forgotaccount{{/str}}</a>
         </div>
     </form>
-    {{#hasidentityproviders}}
-        <div class="login-divider"></div>
-        <div class="login-identityproviders">
-            <h2 class="login-heading">{{#str}} potentialidps, auth {{/str}}</h2>
-            {{#identityproviders}}
-                <a class="btn login-identityprovider-btn btn-block" href="{{url}}">
-                    {{#iconurl}}
-                        <img src="{{iconurl}}" alt="" width="24" height="24"/>
-                    {{/iconurl}}
-                    {{name}}
-                </a>
-            {{/identityproviders}}
+
+    <div class="login-divider"></div>
+        <p>
+        <button class="btn btn-light btn-block" type="button" data-toggle="collapse" data-target="#collapseFAQ" aria-expanded="false" aria-controls="collapseFAQ">
+        Проблемы с входом
+        </button>
+        </p>
+
+    <div class="collapse" id="collapseFAQ">
+        <div>
+            <p> 
+            Проверьте правильность ввода логина. Ваш логин - это символы до знака @ в адресе почты
+            </p>
+            <p><strong>Если Вы сотрудник или студент БФУ им. Канта, проверьте следующее:</strong></p>
+            <ol>
+                <li><span style="font-size: 0.9375rem;">Можете ли Вы войти в <strong>личный кабинет</strong> по адресу&nbsp;</span><a target="_blank" data-stringify-link="https://lk.kantiana.ru/" delay="150" data-sk="tooltip_parent" href="https://lk.kantiana.ru/" rel="noopener noreferrer" tabindex="-1" data-remove-tab-index="true" style="background-color: rgb(255, 255, 255); font-size: 0.9375rem;">https://lk.kantiana.ru/</a><span style="font-size: 0.9375rem;">.</span></li>
+                <li><span style="font-size: 0.9375rem;">Если Вы <strong>смогли войти в личный кабинет</strong>, проверьте, можете ли вы войти в <strong>почтовый ящик</strong> по адресу&nbsp;</span><a target="_blank" data-stringify-link="https://webmail.kantiana.ru/" delay="150" data-sk="tooltip_parent" href="https://webmail.kantiana.ru/" rel="noopener noreferrer" tabindex="-1" data-remove-tab-index="true" style="background-color: rgb(255, 255, 255); font-size: 0.9375rem;">https://webmail.kantiana.ru/</a><span style="font-size: 0.9375rem;">. При входе в почтовый ящик логин вводится в формате:&nbsp;</span><strong style="font-size: 0.9375rem;">student\ваш_логин</strong><span style="font-size: 0.9375rem;">&nbsp;или&nbsp;</span><strong style="font-size: 0.9375rem;">students\ваш_логин</strong><span style="font-size: 0.9375rem;">&nbsp;(для студентов) и&nbsp;</span><strong style="font-size: 0.9375rem;">kantiana\ваш_логин </strong><span style="font-size: 0.9375rem;">(для сотрудников)</span><span style="font-size: 0.9375rem;"><span>.</span></span></li>
+                <li><span style="font-size: 0.9375rem;">Если у Вас <strong>не получилось войти в почту</strong>, пожалуйста, обратитесь в отдел технической поддержки учебного и административного процессов, и&nbsp;</span><strong style="font-size: 0.9375rem;">сообщите, что Вы не можете войти в почту</strong><span style="font-size: 0.9375rem;">.</span></li>
+                <li><span style="font-size: 0.9375rem;">Если Вы <strong>смогли войти в почту</strong>, но <strong>не можете войти на LMS.kantiana</strong>, оставьте обращение в форме обратной связи по </span><a href="https://lms.kantiana.ru/mod/page/view.php?id=272183&amp;forceview=1" style="background-color: rgb(255, 255, 255); font-size: 0.9375rem;">ссылке</a><i data-stringify-type="italic" style="font-size: 0.9375rem;">.</i></li>
+            </ol>
+            <div>
+                <span data-stringify-type="paragraph-break"></span>Контакты отдела технической поддержки учебного и административного процессов (<span>диспетчер принимает заявки с 9-00 до 18-00 без перерывов</span>):<br>
+            </div>
+            <ul data-stringify-type="unordered-list" data-indent="0" data-border="0">
+                <li data-stringify-indent="0" data-stringify-border="0">телефон: 313-306 (добавочный 7010 или 111);</li>
+                <li data-stringify-indent="0" data-stringify-border="0">электронная почта:&nbsp;<a target="_blank" data-stringify-link="mailto:it@kantiana.ru" delay="150" data-sk="tooltip_parent" aria-haspopup="menu" aria-expanded="false" href="mailto:it@kantiana.ru" rel="noopener noreferrer" tabindex="-1" data-remove-tab-index="true">it@kantiana.ru<span aria-label="(открывается в новой вкладке)"></span></a>;</li>
+                <li data-stringify-indent="0" data-stringify-border="0">кабинет 121, корпус 2, ул. А. Невского, 14.</li>
+            </ul><br>
         </div>
-    {{/hasidentityproviders}}
+    </div>
+    
     {{#hasinstructions}}
         <div class="login-divider"></div>
         <div class="login-instructions {{#cansignup}}mb-3{{/cansignup}}">
@@ -175,15 +192,48 @@
     {{/cansignup}}
     {{#canloginasguest}}
         <div class="login-divider"></div>
-        <h2 class="login-heading">{{#str}}someallowguest{{/str}}</h2>
-        <form action="{{loginurl}}" method="post" id="guestlogin">
-            <input type="hidden" name="logintoken" value="{{logintoken}}">
-            <input type="hidden" name="username" value="guest" />
-            <input type="hidden" name="password" value="guest" />
-            <button class="btn btn-secondary" type="submit">{{#str}}loginguest{{/str}}</button>
-        </form>
     {{/canloginasguest}}
-    <div class="login-divider"></div>
+    
+
+    <p>
+    <button class="btn btn-light btn-block" type="button" data-toggle="collapse" data-target="#collapseScos" aria-expanded="false" aria-controls="collapseScos">
+        Прочие способы входа
+    </button>
+    </p>
+
+    <div class="collapse" id="collapseScos">
+        <div>
+        <p>Вход через учетную запись на портале "<a href="https://online.edu.ru" target=_blank>Современная цифровая образовательная среда в РФ</a>".</p>
+        <p><strong>Обратите внимание!</strong></p>
+        <p>Доступ через СЦОС имеет ограниченный функционал. Данные из этой учетной записи <strong>не учитываются</strong> в электронной информационно-образовательной среде БФУ и <strong>не могут быть использованы</strong> в Вашей учебе и работе.</p>
+        <p>Пожалуйста, не используйте эту функцию, если вы:
+        <ul>
+            <li>студент БФУ им. И. Канта</li>
+            <li>сотрудник БФУ им. И. Канта</li>
+            <li>слушатель курсов повышения квалификации или переподготовки БФУ им И. Канта</li>
+        </ul>
+        </p>    
+        </div>
+        {{#hasidentityproviders}}
+            
+            <div class="login-identityproviders">
+                
+                {{#identityproviders}}
+                    <a class="btn login-identityprovider-btn btn-block" href="{{url}}" name="terms" id="terms" >
+                        {{#iconurl}}
+                            <img src="{{iconurl}}" alt="" width="24" height="24"/>
+                        {{/iconurl}}
+                        {{name}}
+                    </a>
+                {{/identityproviders}}
+            </div>
+        {{/hasidentityproviders}}
+    </div>
+
+    
+
+
+<div class="login-divider"></div>
     <div class="d-flex">
         {{#languagemenu}}
             <div class="login-languagemenu">
