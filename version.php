@@ -2,7 +2,7 @@
 /*
 * @package   theme_ikbfu
 * @copyright 2021 Gleb Lobanov
-* @copyright 2022 Dmitry Kharchuk
+* @copyright 2022-2024 Dmitry Kharchuk
 * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 */
 
@@ -10,7 +10,7 @@
                                                        
 defined('MOODLE_INTERNAL') || die();
 
-$plugin->version = '2022060800';
+$plugin->version = '2024080800';
 $plugin->requires = '2022041200';
 $plugin->component = 'theme_ikbfu';
 $plugin->dependencies = [                                                                                                           
