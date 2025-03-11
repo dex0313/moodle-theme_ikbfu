@@ -3,7 +3,7 @@
 /*
 * @package   theme_ikbfu
 * @copyright 2021 Gleb Lobanov
-* @copyright 2022 Dmitry Kharchuk
+* @copyright 2022 - 2025 Dmitry Kharchuk
 * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
 */
 
