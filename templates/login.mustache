@@ -48,7 +48,7 @@
 
         .loginform-left {
             flex: 1;
-            background: url('https://lms.kantiana.ru/pix/fp/login_page_back.png') no-repeat center center;
+            background-image: url(https://lms.kantiana.ru/pix/fp/login_page_back.png);
             background-size: cover;
         }
 
@@ -69,14 +69,13 @@
             }
         }
     </style>
-
-    <div id="page" class="container-fluid pt-5 mt-0">
+<div class="loginform-left"></div>
+    <div id="page" class="container-fluid pt-5 mt-0 loginform-right">
         <div id="page-content" class="row">
             <div id="region-main-box" class="col-12">
                 <section id="region-main" class="col-12 h-100" aria-label="{{#str}}content{{/str}}">
                 <div class="login-wrapper loginform-container">
-                    <div class="loginform-left"></div>
-                    <div class="login-container loginform-right">
+                    <div class="login-container">
                     {{{ output.main_content }}}
                     </div>
                 </div>
