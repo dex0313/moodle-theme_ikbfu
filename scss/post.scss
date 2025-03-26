@@ -452,3 +452,35 @@
 .mobilelink {
   display: none;
 }
+
+//Login page
+.loginform-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+}
+
+.loginform-left {
+  flex: 1;
+  background-image: url(https://lms.kantiana.ru/pix/fp/login_page_back.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.loginform-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+}
+
+@media (max-width: 768px) {
+  .loginform-left {
+      display: none;
+  }
+  .loginform-right {
+      flex: 1 1 100%;
+  }
+}
