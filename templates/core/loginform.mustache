@@ -103,6 +103,7 @@
     {{^logourl}}
         <h1 class="login-heading mb-4">{{sitename}} </h1>
     {{/logourl}}
+    <br><br>
     {{#maintenance}}
         <div class="alert alert-danger login-maintenance">
             {{{maintenance}}}
@@ -148,10 +149,9 @@
             <a href="{{forgotpasswordurl}}">{{#str}}forgotaccount{{/str}}</a>
         </div>
     </form>
-
-    <div class="login-divider"></div>
+    <br><br>
         <p>
-        <button class="btn btn-light btn-block" type="button" data-toggle="collapse" data-target="#collapseFAQ" aria-expanded="false" aria-controls="collapseFAQ">
+        <button class="btn btn-secondary btn-block" type="button" data-toggle="collapse" data-target="#collapseFAQ" aria-expanded="false" aria-controls="collapseFAQ">
         Проблемы с входом
         </button>
         </p>
@@ -166,7 +166,7 @@
             <p>
             <ol>
                 <li>Можете ли Вы войти в <strong>личный кабинет</strong> по адресу <a target="_blank" href=" https://eios.kantiana.ru/login/index.php">https://eios.kantiana.ru/login/index.php</a>.</li>
-                <li>Если Вы <strong>смогли войти в личный кабинет</strong>, проверьте, можете ли вы войти в <strong>почтовый ящик</strong> по адресу <a target="_blank" href="https://webmail.kantiana.ru/">https://webmail.kantiana.ru/</a>. При входе в почтовый ящик логин вводится в формате: <strong>student\ваш_логин</strong> или<strong> students\ваш_логин</strong> (для студентов) и <strong>kantiana\ваш_логин </strong>(для сотрудников).</li>
+                <li>Если Вы <strong>смогли войти в личный кабинет</strong>, проверьте, можете ли вы войти в <strong>почтовый ящик</strong> по адресу <a target="_blank" href="https://360.yandex.ru/">https://360.yandex.ru/</a>. При входе в почтовый ящик логин вводится в формате: <strong>ваш_логин@stud.kantiana.ru</strong> (для студентов) и <strong>ваш_логин@kantiana.ru </strong>(для сотрудников).</li>
                 <li>Если у Вас <strong>не получилось войти в почту</strong>, пожалуйста, обратитесь в отдел технической поддержки учебного и административного процессов, и <strong>сообщите, что Вы не можете войти в почту</strong>.</li>
                 <li>Если Вы <strong>смогли войти в почту</strong>, но <strong>не можете войти на LMS.kantiana</strong>, оставьте обращение в <strong><a href="https://lms.kantiana.ru/mod/page/view.php?id=272183">форме обратной связи</a></strong>.</li>
             </ol>
@@ -187,12 +187,12 @@
         </div>
     {{/cansignup}}
     {{#canloginasguest}}
-        <div class="login-divider"></div>
+
     {{/canloginasguest}}
     
 
     <p>
-    <button class="btn btn-light btn-block" type="button" data-toggle="collapse" data-target="#collapseScos" aria-expanded="false" aria-controls="collapseScos">
+    <button class="btn btn-secondary btn-block" type="button" data-toggle="collapse" data-target="#collapseScos" aria-expanded="false" aria-controls="collapseScos">
         Прочие способы входа
     </button>
     </p>
