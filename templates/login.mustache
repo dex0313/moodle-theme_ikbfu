@@ -39,41 +39,92 @@
     {{{ output.standard_top_of_body_html }}}
 
 <div class="container-fluid min-vh-100 d-flex flex-column">
-  <!-- Верхнее меню -->
+  <!-- Верхнее меню слева -->
   <nav class="d-flex align-items-center py-3 px-4">
     <!-- Логотип -->
-    <a href="{{config.wwwroot}}" class="d-flex align-items-center me-4">
+    <a href="{{config.wwwroot}}" class="d-flex align-items-center mr-4 me-4">
       <img src="https://lms.kantiana.ru/pluginfile.php/1/core_admin/logocompact/300x300/1755594641/bfu-logo-short-rus-blue%20414.png"
-           alt="БФУ"
-           style="height:40px; width:auto;">
+           alt="БФУ" style="height:40px;width:auto;">
     </a>
-    <!-- Ссылки -->
+
+    <!-- Ссылки c автологином гостя -->
     <div class="d-flex flex-wrap">
-      <a href="https://lms.kantiana.ru/mod/page/view.php?id=272183&forceview=1" 
-         class="me-3 btn btn-link p-0">Открытые онлайн-курсы</a>
-      <a href="https://lms.kantiana.ru/static/helpcenter.html" 
-         class="me-3 btn btn-link p-0">Справочный центр</a>
-      <a href="https://lms.kantiana.ru/course/index.php?categoryid=142" 
-         class="btn btn-link p-0">Форма обратной связи</a>
+      <a class="btn btn-link p-0 mr-3 me-3"
+         href="{{config.wwwroot}}/login/index.php?guest=1&amp;wantsurl=https%3A%2F%2Flms.kantiana.ru%2Fmod%2Fpage%2Fview.php%3Fid%3D272183%26forceview%3D1">
+         Открытые онлайн-курсы
+      </a>
+      <a class="btn btn-link p-0 mr-3 me-3"
+         href="{{config.wwwroot}}/login/index.php?guest=1&amp;wantsurl=https%3A%2F%2Flms.kantiana.ru%2Fstatic%2Fhelpcenter.html">
+         Справочный центр
+      </a>
+      <a class="btn btn-link p-0"
+         href="{{config.wwwroot}}/login/index.php?guest=1&amp;wantsurl=https%3A%2F%2Flms.kantiana.ru%2Fcourse%2Findex.php%3Fcategoryid%3D142">
+         Форма обратной связи
+      </a>
     </div>
   </nav>
 
   <div class="row flex-grow-1">
-    <!-- Левая часть с картинкой как фон -->
+    <!-- Левая половина: фон на всю высоту -->
     <div class="col-lg-6 d-none d-lg-block p-0">
-      <div class="h-100 w-100" 
-           style="background-image: url('https://lms.kantiana.ru/pix/fp/login_page_back.png');
-                  background-size: cover;
-                  background-position: center;">
+      <div class="h-100 w-100"
+           style="background-image:url('https://lms.kantiana.ru/pix/fp/login_page_back.png');
+                  background-size:cover;
+                  background-position:center;">
       </div>
     </div>
 
-<!-- Правая часть с формой -->
+    <!-- Правая половина: форма -->
     <div class="col-lg-6 d-flex align-items-center justify-content-center">
-      <div class="w-100 px-3" style="max-width: 420px;">
-        <h3 class="fw-bold text-primary mb-4">Платформа онлайн-обучения<br>БФУ им. И. Канта</h3>
+      <div class="w-100 px-3" style="max-width:420px;">
+        <h3 class="text-primary mb-4">Платформа онлайн-обучения<br>БФУ им. И. Канта</h3>
         <p class="mb-4">Добро пожаловать! Для входа используйте логин в формате <b>bfu@kantiana.ru</b> и пароль.</p>
                     {{{ output.main_content }}}
+                    <!-- Аккордеоны (универсальная разметка) -->
+        <div id="loginAccordion" class="mt-3">
+          <!-- Проблемы с входом -->
+          <div class="mb-2">
+            <button type="button"
+                    class="btn btn-light w-100"
+                    style="text-align:left;"
+                    data-toggle="collapse"
+                    data-bs-toggle="collapse"
+                    data-target="#collapseProblems"
+                    data-bs-target="#collapseProblems"
+                    aria-expanded="false"
+                    aria-controls="collapseProblems">
+              Проблемы с входом
+            </button>
+            <div id="collapseProblems" class="collapse" data-parent="#loginAccordion" data-bs-parent="#loginAccordion">
+              <div class="card card-body p-3">
+                <p class="mb-0">Если у вас возникли сложности с доступом, обратитесь в техподдержку:
+                  <a href="mailto:support@kantiana.ru">support@kantiana.ru</a>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Прочие способы входа -->
+          <div class="mb-2">
+            <button type="button"
+                    class="btn btn-light w-100"
+                    style="text-align:left;"
+                    data-toggle="collapse"
+                    data-bs-toggle="collapse"
+                    data-target="#collapseOther"
+                    data-bs-target="#collapseOther"
+                    aria-expanded="false"
+                    aria-controls="collapseOther">
+              Прочие способы входа
+            </button>
+            <div id="collapseOther" class="collapse" data-parent="#loginAccordion" data-bs-parent="#loginAccordion">
+              <div class="card card-body p-3">
+                {{{ output.render_login_oauth_buttons }}}
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -87,5 +138,39 @@
 M.util.js_pending('theme_boost/loader');
 require(['theme_boost/loader'], function() {
   M.util.js_complete('theme_boost/loader');
+});
+{{/js}}
+
+{{! Небольшой JS, чтобы раскрытие работало и без Bootstrap JS }}
+{{#js}}
+require([], function() {
+  var acc = document.getElementById('loginAccordion');
+  if (!acc) { return; }
+
+  var triggers = acc.querySelectorAll('[data-toggle="collapse"], [data-bs-toggle="collapse"]');
+  triggers.forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var sel = btn.getAttribute('data-target') || btn.getAttribute('data-bs-target') || btn.getAttribute('href');
+      if (!sel) { return; }
+      var target = document.querySelector(sel);
+      if (!target) { return; }
+
+      var parentSel = target.getAttribute('data-parent') || target.getAttribute('data-bs-parent');
+      if (parentSel) {
+        document.querySelectorAll(parentSel + ' .collapse.show').forEach(function(open) {
+          if (open !== target) {
+            open.classList.remove('show');
+            var ctl = acc.querySelector('[data-target="#' + open.id + '"], [data-bs-target="#' + open.id + '"], a[href="#' + open.id + '"]');
+            if (ctl) { ctl.setAttribute('aria-expanded', 'false'); }
+          }
+        });
+      }
+
+      var willOpen = !target.classList.contains('show');
+      target.classList.toggle('show', willOpen);
+      btn.setAttribute('aria-expanded', willOpen ? 'true' : 'false');
+    });
+  });
 });
 {{/js}}
