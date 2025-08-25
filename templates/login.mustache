@@ -38,19 +38,94 @@
 
     {{{ output.standard_top_of_body_html }}}
 
-    <div id="page" class="container-fluid pt-5 mt-0">
-        <div id="page-content" class="row">
-            <div id="region-main-box" class="col-12">
-                <section id="region-main" class="col-12 h-100" aria-label="{{#str}}content{{/str}}">
-                <div class="login-wrapper">
-                    <div class="login-container">
-                    {{{ output.main_content }}}
-                    </div>
-                </div>
-                </section>
-            </div>
-        </div>
+<div class="container-fluid min-vh-100 d-flex flex-column">
+  <!-- Верхнее меню -->
+  <nav class="d-flex align-items-center py-3 px-4">
+    <!-- Логотип -->
+    <a href="{{config.wwwroot}}" class="d-flex align-items-center me-4">
+      <img src="https://lms.kantiana.ru/pluginfile.php/1/core_admin/logocompact/300x300/1755594641/bfu-logo-short-rus-blue%20414.png"
+           alt="БФУ"
+           style="height:40px; width:auto;">
+    </a>
+    <!-- Ссылки -->
+    <div class="d-flex flex-wrap">
+      <a href="https://lms.kantiana.ru/mod/page/view.php?id=272183&forceview=1" 
+         class="me-3 btn btn-link p-0">Открытые онлайн-курсы</a>
+      <a href="https://lms.kantiana.ru/static/helpcenter.html" 
+         class="me-3 btn btn-link p-0">Справочный центр</a>
+      <a href="https://lms.kantiana.ru/course/index.php?categoryid=142" 
+         class="btn btn-link p-0">Форма обратной связи</a>
     </div>
+  </nav>
+
+  <div class="row flex-grow-1">
+    <!-- Левая часть с картинкой как фон -->
+    <div class="col-lg-6 d-none d-lg-block p-0">
+      <div class="h-100 w-100" 
+           style="background-image: url('https://lms.kantiana.ru/pix/fp/login_page_back.png');
+                  background-size: cover;
+                  background-position: center;">
+      </div>
+    </div>
+
+<!-- Правая часть с формой -->
+    <div class="col-lg-6 d-flex align-items-center justify-content-center">
+      <div class="w-100 px-3" style="max-width: 420px;">
+        <h3 class="font-weight-bold text-primary mb-4">Платформа онлайн-обучения<br>БФУ им. И. Канта</h3>
+        <p class="mb-4">Добро пожаловать! Для входа используйте логин в формате <b>bfu@kantiana.ru</b> и пароль.</p>
+                    {{{ output.main_content }}}
+                    <div class="mb-3">
+          <a href="{{config.wwwroot}}/login/forgot_password.php">Забыли пароль?</a>
+        </div>
+
+        <!-- Аккордеоны -->
+        <div id="loginAccordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header" id="headingProblems">
+              <button class="accordion-button collapsed btn btn-light w-100 text-left" type="button"
+                      data-toggle="collapse" data-target="#collapseProblems"
+                      aria-expanded="false" aria-controls="collapseProblems">
+                Проблемы с входом
+              </button>
+            </h2>
+            <div id="collapseProblems" class="accordion-collapse collapse" aria-labelledby="headingProblems"
+                 data-parent="#loginAccordion">
+              <div class="accordion-body p-3">
+                <p>Если у вас возникли сложности с доступом, обратитесь в техподдержку: <a href="mailto:support@kantiana.ru">support@kantiana.ru</a></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="accordion-item mt-2">
+            <h2 class="accordion-header" id="headingOther">
+              <button class="accordion-button collapsed btn btn-light w-100 text-left" type="button"
+                      data-toggle="collapse" data-target="#collapseOther"
+                      aria-expanded="false" aria-controls="collapseOther">
+                Прочие способы входа
+              </button>
+            </h2>
+            <div id="collapseOther" class="accordion-collapse collapse" aria-labelledby="headingOther"
+                 data-parent="#loginAccordion">
+              <div class="accordion-body p-3">
+                {{{ output.render_login_oauth_buttons }}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Нижняя панель -->
+        <div class="d-flex justify-content-between mt-4">
+          <div>
+            {{{ output.standard_language_menu }}}
+          </div>
+          <div>
+            <a href="{{config.wwwroot}}/cookies" class="small">Уведомление о файлах cookie</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
     {{> theme_ikbfu/footer }}
 </div>
 
