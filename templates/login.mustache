@@ -74,54 +74,12 @@
         <h3 class="fw-bold text-primary mb-4">Платформа онлайн-обучения<br>БФУ им. И. Канта</h3>
         <p class="mb-4">Добро пожаловать! Для входа используйте логин в формате <b>bfu@kantiana.ru</b> и пароль.</p>
                     {{{ output.main_content }}}
-                    <div class="mb-3">
-          <a href="{{config.wwwroot}}/login/forgot_password.php">Забыли пароль?</a>
-        </div>
 
-        <!-- Аккордеоны -->
-        <div id="loginAccordion">
-          <div class="accordion-item">
-            <h2 class="accordion-header" id="headingProblems">
-              <button class="accordion-button collapsed btn btn-light w-100 text-start" type="button"
-                      data-toggle="collapse" data-target="#collapseProblems"
-                      aria-expanded="false" aria-controls="collapseProblems">
-                Проблемы с входом
-              </button>
-            </h2>
-            <div id="collapseProblems" class="accordion-collapse collapse" aria-labelledby="headingProblems"
-                 data-parent="#loginAccordion">
-              <div class="accordion-body p-3">
-                <p>Если у вас возникли сложности с доступом, обратитесь в техподдержку: <a href="mailto:support@kantiana.ru">support@kantiana.ru</a></p>
-              </div>
-            </div>
-          </div>
 
-          <div class="accordion-item mt-2">
-            <h2 class="accordion-header" id="headingOther">
-              <button class="accordion-button collapsed btn btn-light w-100 text-start" type="button"
-                      data-toggle="collapse" data-target="#collapseOther"
-                      aria-expanded="false" aria-controls="collapseOther">
-                Прочие способы входа
-              </button>
-            </h2>
-            <div id="collapseOther" class="accordion-collapse collapse" aria-labelledby="headingOther"
-                 data-parent="#loginAccordion">
-              <div class="accordion-body p-3">
-                {{{ output.render_login_oauth_buttons }}}
-              </div>
-            </div>
-          </div>
-        </div>
+        
 
         <!-- Нижняя панель -->
-        <div class="d-flex justify-content-between mt-4">
-          <div>
-            {{{ output.standard_language_menu }}}
-          </div>
-          <div>
-            <a href="{{config.wwwroot}}/cookies" class="small">Уведомление о файлах cookie</a>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>
