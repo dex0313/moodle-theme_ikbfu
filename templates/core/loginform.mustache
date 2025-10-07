@@ -111,6 +111,7 @@
     <form class="login-form" action="{{loginurl}}" method="post" id="login">
         <input type="hidden" name="logintoken" value="{{logintoken}}">
         <div class="login-form-username mb-3">
+            {{#str}} loginpage_login, theme_ikbfu {{/str}}
             <label for="username" class="sr-only">
                 {{^canloginbyemail}}
                     {{#str}} username {{/str}}
@@ -127,6 +128,7 @@
                 !}}autocomplete="username">
         </div>
         <div class="login-form-password mb-3">
+            {{#str}} loginpage_password, theme_ikbfu {{/str}}
             <label for="password" class="sr-only">{{#str}} password {{/str}}</label>
             <input type="password" name="password" id="password" value="" {{!
                 !}}class="form-control form-control-lg" {{!
@@ -158,12 +160,11 @@
     
     {{#canloginasguest}}
         <div class="login-divider"></div>
-        <h2 class="login-heading">{{#str}}someallowguest{{/str}}</h2>
         <form action="{{loginurl}}" method="post" id="guestlogin">
             <input type="hidden" name="logintoken" value="{{logintoken}}">
             <input type="hidden" name="username" value="guest" />
             <input type="hidden" name="password" value="guest" />
-            <button class="btn btn-secondary" type="submit" id="loginguestbtn">{{#str}}loginguest{{/str}}</button>
+            <button class="btn btn-light btn-block" type="submit" id="loginguestbtn">{{#str}}loginguest{{/str}}</button>
         </form>
     {{/canloginasguest}}
     

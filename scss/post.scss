@@ -455,51 +455,52 @@
 
 
 /* Шрифт */
-body, .loginpage {
-    font-family: "Roboto", "Arial", "Helvetica", sans-serif;
-    color: #212529;
-}
+// body, .loginpage {
+//     font-family: "Roboto", "Arial", "Helvetica", sans-serif;
+//     color: #212529;
+// }
 
 /* Заголовки */
 .loginpage h3 {
-    color: #004B87;
-    font-weight: 700;
+    color: #21145F !important;
+    font-weight: 900;
+    size: 32px;
 }
 
-/* Кнопки */
-.loginpage .btn-primary {
-    background-color: #004B87;
-    border-color: #004B87;
-    font-weight: 500;
-}
-.loginpage .btn-primary:hover {
-    background-color: #005FA4;
-    border-color: #005FA4;
-}
+// /* Кнопки */
+// .loginpage .btn-primary {
+//     background-color: #004B87;
+//     border-color: #004B87;
+//     font-weight: 500;
+// }
+// .loginpage .btn-primary:hover {
+//     background-color: #005FA4;
+//     border-color: #005FA4;
+// }
 
 /* Ссылки */
 .loginpage a {
-    color: #004B87;
+    color: #000000;
     text-decoration: none;
 }
-.loginpage a:hover {
-    color: #005FA4;
-    text-decoration: underline;
-}
+// .loginpage a:hover {
+//     color: #005FA4;
+//     text-decoration: underline;
+// }
 
-/* Аккордеон */
-.loginpage .btn.btn-light {
-    background-color: #f8f9fa;
-    color: #212529;
-    font-weight: 500;
-    border: 1px solid #dee2e6;
-    border-radius: 0.25rem;
-}
-.loginpage .btn.btn-light:hover {
-    background-color: #e9ecef;
-}
+// /* Аккордеон */
+// .loginpage .btn.btn-light {
+//     background-color: #f8f9fa;
+//     color: #212529;
+//     font-weight: 500;
+//     border: 1px solid #dee2e6;
+//     border-radius: 0.25rem;
+// }
+// .loginpage .btn.btn-light:hover {
+//     background-color: #e9ecef;
+// }
 
-/* Нижнее меню */
-.loginpage .small {
-    color: #6C757D;
-}
+// /* Нижнее меню */
+// .loginpage .small {
+//     color: #6C757D;
+// }

@@ -58,6 +58,7 @@ $string['privacy:drawernavopen'] = 'The current preference for the navigation dr
 // Deprecated since Moodle 4.0.
 $string['totop'] = 'Go to top';
 
-$string['loginpage_welcome'] = 'Welcome';
+$string['loginpage_platform'] = '<p><h3 class="loginpage">Immanuel Kant Baltic Federal University`s online learning platform</h3></p>';
+$string['loginpage_welcome'] = '<p class="mb-4">Welcome! To log in, use your login (in the format <b>bfu@kantiana.ru</b>) and password.</p>';
 $string['loginpage_login'] = 'Login';
 $string['loginpage_password'] = 'Password';

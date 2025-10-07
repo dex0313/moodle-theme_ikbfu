@@ -13,6 +13,7 @@ $string['choosereadme'] = 'Тема Балтийского федерально�
 $string['pluginname'] = 'IKBFU';
 $string['default_authors'] = 'БФУ им. И. Канта';
 
-$string['loginpage_welcome'] = '<p class="mb-4">Добро пожаловать! Для входа используйте логин в формате <b>bfu@kantiana.ru</b> и пароль.</p>';
-$string['loginpage_login'] = 'Login';
-$string['loginpage_password'] = 'Password';
+$string['loginpage_platform'] = '<p><h3 class="loginpage">Платформа онлайн-обучения БФУ им. И. Канта</h3></p>';
+$string['loginpage_welcome'] = '<p class="mb-4">Добро пожаловать! Для входа используйте логин (в формате <b>bfu@kantiana.ru</b>) и пароль.</p>';
+$string['loginpage_login'] = 'Логин';
+$string['loginpage_password'] = 'Пароль';
