@@ -58,3 +58,6 @@ $string['privacy:drawernavopen'] = 'The current preference for the navigation dr
 // Deprecated since Moodle 4.0.
 $string['totop'] = 'Go to top';
 
+$string['loginpage_welcome'] = 'Welcome';
+$string['loginpage_login'] = 'Login';
+$string['loginpage_password'] = 'Password';

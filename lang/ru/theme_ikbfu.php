@@ -12,3 +12,7 @@ defined('MOODLE_INTERNAL') || die();
 $string['choosereadme'] = 'Тема Балтийского федерального университета им. И. Канта.';
 $string['pluginname'] = 'IKBFU';
 $string['default_authors'] = 'БФУ им. И. Канта';
+
+$string['loginpage_welcome'] = '<p class="mb-4">Добро пожаловать! Для входа используйте логин в формате <b>bfu@kantiana.ru</b> и пароль.</p>';
+$string['loginpage_login'] = 'Login';
+$string['loginpage_password'] = 'Password';

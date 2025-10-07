@@ -94,15 +94,7 @@
 }}
 
 <div class="loginform">
-    {{#logourl}}
-        <div id="loginlogo" class="login-logo">
-            <img id="logoimage" src="{{logourl}}" class="img-fluid" alt="{{sitename}}"/>
-            <h1 class="login-heading sr-only"> {{sitename}} </h1>
-        </div>
-    {{/logourl}}
-    {{^logourl}}
-        <h1 class="login-heading mb-4">{{sitename}} </h1>
-    {{/logourl}}
+
     {{#maintenance}}
         <div class="alert alert-danger login-maintenance">
             {{{maintenance}}}
@@ -175,7 +167,41 @@
         </form>
     {{/canloginasguest}}
     
+<br>
+    <p>
+    <button class="btn btn-light btn-block" type="button" data-toggle="collapse" data-target="#collapseScos" aria-expanded="false" aria-controls="collapseScos">
+        Прочие способы входа
+    </button>
+    </p>
 
+    <div class="collapse" id="collapseScos">
+        <div>
+        <p>Вход через учетную запись на портале "<a href="https://online.edu.ru" target=_blank>Современная цифровая образовательная среда в РФ</a>".</p>
+        <p><strong>Обратите внимание!</strong></p>
+        <p>Доступ через СЦОС имеет ограниченный функционал. Данные из этой учетной записи <strong>не учитываются</strong> в электронной информационно-образовательной среде БФУ и <strong>не могут быть использованы</strong> в Вашей учебе и работе.</p>
+        <p>Пожалуйста, не используйте эту функцию, если вы:
+        <ul>
+            <li>студент БФУ им. И. Канта</li>
+            <li>сотрудник БФУ им. И. Канта</li>
+            <li>слушатель курсов повышения квалификации или переподготовки БФУ им. И. Канта</li>
+        </ul>
+        </p>    
+        </div>
+        {{#hasidentityproviders}}
+            
+            <div class="login-identityproviders">
+                
+                {{#identityproviders}}
+                    <a class="btn login-identityprovider-btn btn-block" href="{{url}}" name="terms" id="terms" >
+                        {{#iconurl}}
+                            <img src="{{iconurl}}" alt="" width="24" height="24"/>
+                        {{/iconurl}}
+                        {{name}}
+                    </a>
+                {{/identityproviders}}
+            </div>
+        {{/hasidentityproviders}}
+    </div>
    
 
 <div class="login-divider"></div>
