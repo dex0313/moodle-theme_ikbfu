@@ -14,6 +14,26 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+// defined('MOODLE_INTERNAL') || die();
+
+// /**
+//  * A login page layout for the boost theme.
+//  *
+//  * @package   theme_boost
+//  * @copyright 2016 Damyon Wiese
+//  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+//  */
+
+// $bodyattributes = $OUTPUT->body_attributes();
+
+// $templatecontext = [
+//     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
+//     'output' => $OUTPUT,
+//     'bodyattributes' => $bodyattributes
+// ];
+
+// echo $OUTPUT->render_from_template('theme_ikbfu/login', $templatecontext);
+
 defined('MOODLE_INTERNAL') || die();
 
 /**
@@ -26,11 +46,17 @@ defined('MOODLE_INTERNAL') || die();
 
 $bodyattributes = $OUTPUT->body_attributes();
 
+// Left-panel instructions. Only set when the admin has defined custom instructions;
+// the template falls back to the default welcome content when this is empty/null.
+$leftinstructions = !empty($CFG->auth_instructions)
+    ? format_text($CFG->auth_instructions, FORMAT_MOODLE, ['context' => context_system::instance()])
+    : null;
+
 $templatecontext = [
     'sitename' => format_string($SITE->shortname, true, ['context' => context_course::instance(SITEID), "escape" => false]),
     'output' => $OUTPUT,
-    'bodyattributes' => $bodyattributes
+    'bodyattributes' => $bodyattributes,
+    'leftinstructions' => $leftinstructions,
 ];
 
-echo $OUTPUT->render_from_template('theme_ikbfu/login', $templatecontext);
-
+echo $OUTPUT->render_from_template('theme_boost/login', $templatecontext);
