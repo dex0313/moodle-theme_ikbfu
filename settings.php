@@ -43,7 +43,15 @@ if ($ADMIN->fulltree) {
     $setting = new admin_setting_configselect($name, $title, $description, $default, $choices);                                     
     $setting->set_updatedcallback('theme_reset_all_caches');                                                                        
     $page->add($setting);                                                                                                           
-                                                                                                                                    
+                                             
+    // Login Background image setting.
+    $name = 'theme_ikbfu/loginbackgroundimage';
+    $title = get_string('loginbackgroundimage', 'theme_ikbfu');
+    $description = get_string('loginbackgroundimage_desc', 'theme_ikbfu');
+    $setting = new admin_setting_configstoredfile($name, $title, $description, 'loginbackgroundimage');
+    $setting->set_updatedcallback('theme_reset_all_caches');
+    $page->add($setting);
+
     // Preset files setting.                                                                                                        
     $name = 'theme_ikbfu/presetfiles';                                                                                              
     $title = get_string('presetfiles','theme_ikbfu');                                                                               
