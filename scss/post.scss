@@ -164,6 +164,7 @@
                 a {
                   color: #000;
                   font-weight: 500;
+                  list-style: none;
                 }
   
                 a:hover {
@@ -181,10 +182,6 @@
                   border-radius: 5%;
                   object-fit: cover;
                 }
-              }
-  
-              .ikbfu-teachers {
-                list-style: none;
               }
             }
           }
@@ -418,17 +415,16 @@
 //   margin-bottom: auto;
 // }
 
-// .pagelayout-standard #page.drawers .main-inner, body.limitedwidth #page.drawers .main-inner {
-//   max-width: 1088px;
-// }
-
-// .pagelayout-standard #page.drawers .main-inner, body.path-mod-hvp #page.drawers .main-inner {
-//   max-width: 1088px;
-// }
-
-// .pagelayout-standard #page.drawers .main-inner, body.path-mod-questionnaire #page.drawers .main-inner {
-//   max-width: 1088px;
-// }
+//Page width incourse
+.pagelayout-standard #page.drawers .main-inner, body.limitedwidth #page.drawers .main-inner {
+  max-width: 1088px;
+}
+.pagelayout-standard #page.drawers .main-inner, body.path-mod-hvp #page.drawers .main-inner {
+  max-width: 1088px;
+}
+.pagelayout-standard #page.drawers .main-inner, body.path-mod-questionnaire #page.drawers .main-inner {
+  max-width: 1088px;
+}
 
 // .header-maxwidth {
 //   max-width: none;
