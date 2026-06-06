@@ -58,8 +58,6 @@ class course_renderer extends \core_course_renderer {
         }
 
         $course_rating = self::get_course_rating($course->id);
-        $course_rating_new = self::get_course_rating_new($course->id);
-
 
         // .coursebox
         $content .= html_writer::start_tag('div', array(
@@ -70,7 +68,7 @@ class course_renderer extends \core_course_renderer {
         $coursename = $chelper->get_course_formatted_name($course);
         
         // Сheck if the length of the course name exceeds $count
-        // If it exceeds limit the number of characters by $count and add $append
+        // If it exceeds limit the number of characters by $count add $append
         $count = 60;
         $append = '...';
         if (mb_strlen($coursename) > $count) {
@@ -82,8 +80,8 @@ class course_renderer extends \core_course_renderer {
         
             $content .= html_writer::start_tag('a', array('href' => $courselink));
 
-                $content .= html_writer::start_tag('div', array('class' => 'ikbfu2021-info'));
-                    $content .= html_writer::start_tag('div', array('class' => 'ikbfu2021-row')); 
+                $content .= html_writer::start_tag('div', array('class' => 'ikbfu-info'));
+                    $content .= html_writer::start_tag('div', array('class' => 'ikbfu-row')); 
                         //$content .= $this->course_name($chelper, $course);
                         $content .= html_writer::tag('div', $coursename, array('class' => 'coursename'));
 
@@ -102,19 +100,17 @@ class course_renderer extends \core_course_renderer {
 
                         $content .= $this->course_overview_files($course);
                     $content .= html_writer::end_tag('div');
-                    $content .= html_writer::start_tag('div', array('class' => 'ikbfu2021-row')); 
+                    $content .= html_writer::start_tag('div', array('class' => 'ikbfu-row')); 
                         $content .= self::get_course_authors($course->id);
                         //Icon for invisible courses
                         $content .= html_writer::start_tag('i', array('class' => $course->visible ? '' : 'icon fa fa-eye-slash fa-fw'));
                         $content .= html_writer::end_tag('i');
                     $content .= html_writer::end_tag('div');
                     
-                    $content .= html_writer::start_tag('div', array('class' => 'ikbfu2021-row')); 
-                    // if ($course_rating != 0) {
-                    //     $content .= html_writer::tag('span', '&#9733; ' . number_format($course_rating, 2), ['class' => 'ikbfu2021-course-card-footer']);
-                    // }
-                    if ($course_rating_new != 0) {
-                        $content .= html_writer::tag('span', '&#9733; ' . number_format($course_rating_new, 2), ['class' => 'ikbfu2021-course-card-footer']);
+                    $content .= html_writer::start_tag('div', array('class' => 'ikbfu-row')); 
+
+                    if ($course_rating != 0) {
+                        $content .= html_writer::tag('span', '&#9733; ' . number_format($course_rating, 2), ['class' => 'ikbfu-course-card-footer']);
                     }
                     $content .= html_writer::end_tag('div');               
                     
@@ -125,23 +121,23 @@ class course_renderer extends \core_course_renderer {
         return $content;
     }
 
+    // private static function get_course_rating(string $course_id) : float {
+    //     global $DB;
+    //     $ratings = $DB->get_records('block_rate_course', ['course' => $course_id], '', 'id, rating');
+
+    //     $rating_count = count($ratings);
+
+    //     if ($rating_count == 0) {
+    //         return 0;
+    //     }
+
+    //     $rating_sum   = array_reduce($ratings, function($carry, $item) {return $carry + $item->rating;}, 0);
+    //     $rating       = $rating_sum / $rating_count;
+
+    //     return $rating;
+    // }
+
     private static function get_course_rating(string $course_id) : float {
-        global $DB;
-        $ratings = $DB->get_records('block_rate_course', ['course' => $course_id], '', 'id, rating');
-
-        $rating_count = count($ratings);
-
-        if ($rating_count == 0) {
-            return 0;
-        }
-
-        $rating_sum   = array_reduce($ratings, function($carry, $item) {return $carry + $item->rating;}, 0);
-        $rating       = $rating_sum / $rating_count;
-
-        return $rating;
-    }
-
-    private static function get_course_rating_new(string $course_id) : float {
         global $DB;
         $rating = $DB->get_field('tool_courserating_summary', 'avgrating', ['courseid'=> $course_id] );
 
@@ -223,7 +219,7 @@ class course_renderer extends \core_course_renderer {
     protected function course_contacts(\core_course_list_element $course) {
         $content = '';
         if ($course->has_course_contacts()) {
-            $content .= html_writer::start_tag('ul', ['class' => 'ikbfu2021-teachers']);
+            $content .= html_writer::start_tag('ul', ['class' => 'ikbfu-teachers']);
             $count = 0;
             foreach ($course->get_course_contacts() as $coursecontact) {
                 if ($count > 1) {
@@ -278,7 +274,7 @@ class course_renderer extends \core_course_renderer {
             }
             $content .= $this->coursecat_courses($chelper, $courses, $coursecat->get_courses_count());
             $pagination = $this->get_pagination($chelper, $courses, $coursecat->get_courses_count());
-            $content .= html_writer::tag('div',$pagination,['class' => 'ikbfu-2021-pagination-row']);
+            $content .= html_writer::tag('div',$pagination,['class' => 'ikbfu-pagination-row']);
 
         }
 
