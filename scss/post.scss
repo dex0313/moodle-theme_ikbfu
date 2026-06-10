@@ -132,7 +132,7 @@
           a {
             color: #000;
             font-weight: 300;
-            font-weight: large !important;          
+            font-weight: 500 !important;          
           }
   
           a:hover {
@@ -147,35 +147,45 @@
             justify-content: space-between;
   
             .ikbfu-row {
-              display: flex;
-              justify-content: space-between;
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
   
-              .coursename {
-                color: #000;
-                font-size: 1.4em;
-                line-height: 1.1;
-                letter-spacing: normal;
-                font-weight: 500;
-                margin: 0px 3px 0px 0px;
-                word-break: break-word;
-              }
-  
-              .ikbfu-teachers {
-                a {
-                  color: #000;
-                  font-weight: 500;
-                  list-style: none;
-                }
-  
-                a:hover {
-                  color: #000;
-                  text-decoration: none;
-                }
-              }
+            .ikbfu-footer {
+                margin-top: 15px;
+            }
+
+            .coursename {
+              color: #000;
+              font-size: 1.4em;
+              line-height: 1.1;
+              letter-spacing: normal;
+              font-weight: 500;
+              margin: 0px 3px 0px 0px;
+              word-break: break-word;
+
+              flex: 1;
+              min-width: 0;
+            }
+    
+            .ikbfu-teachers {
+              a {
+                    color: #000;
+                    font-weight: 500;
+                    list-style: none;
+                  }
+    
+                  a:hover {
+                    color: #000;
+                    text-decoration: none;
+                  }
+            }
   
               .courseimage {
                 width: auto !important;
-  
+                flex-shrink: 0;
+
                 img {
                   width: 100px;
                   height: 100px;
@@ -185,7 +195,7 @@
               }
             }
           }
-        }
+        
         .coursebox:hover {
           box-shadow: 0px 0px 10px 3px rgba(15, 110, 254, 0.5);
         }

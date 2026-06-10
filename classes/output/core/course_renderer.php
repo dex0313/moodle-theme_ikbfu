@@ -81,9 +81,13 @@ class course_renderer extends \core_course_renderer {
             $content .= html_writer::start_tag('a', array('href' => $courselink));
 
                 $content .= html_writer::start_tag('div', array('class' => 'ikbfu-info'));
-                    $content .= html_writer::start_tag('div', array('class' => 'ikbfu-row')); 
-                        //$content .= $this->course_name($chelper, $course);
+                    $content .= html_writer::start_tag('div', array('class' => 'ikbfu-row ikbfu-header')); 
                         $content .= html_writer::tag('div', $coursename, array('class' => 'coursename'));
+                        $content .= $this->course_overview_files($course);
+                    $content .= html_writer::end_tag('div');
+        //            $content .= html_writer::start_tag('div', array('class' => 'ikbfu-row')); 
+                        //$content .= $this->course_name($chelper, $course);
+        //                $content .= html_writer::tag('div', $coursename, array('class' => 'coursename'));
 
                         // $content .= html_writer::start_tag('div', ['class' => 'moreinfo']);
                         // if ($chelper->get_show_courses() < self::COURSECAT_SHOW_COURSES_EXPANDED) {
@@ -99,7 +103,8 @@ class course_renderer extends \core_course_renderer {
                         // $content .= html_writer::end_tag('div');
 
                         $content .= $this->course_overview_files($course);
-                    $content .= html_writer::end_tag('div');
+        //            $content .= html_writer::end_tag('div');
+                $content .= html_writer::start_tag('div', array('class' => 'ikbfu-footer'));
                     $content .= html_writer::start_tag('div', array('class' => 'ikbfu-row')); 
                         $content .= self::get_course_authors($course->id);
                         //Icon for invisible courses
@@ -113,7 +118,7 @@ class course_renderer extends \core_course_renderer {
                         $content .= html_writer::tag('span', '&#9733; ' . number_format($course_rating, 2), ['class' => 'ikbfu-course-card-footer']);
                     }
                     $content .= html_writer::end_tag('div');               
-                    
+                $content .= html_writer::end_tag('div');  
                 $content .= html_writer::end_tag('div');
 
             $content .= html_writer::end_tag('a');
