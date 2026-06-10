@@ -102,7 +102,7 @@ class course_renderer extends \core_course_renderer {
                         // }
                         // $content .= html_writer::end_tag('div');
 
-                        $content .= $this->course_overview_files($course);
+        //                $content .= $this->course_overview_files($course);
         //            $content .= html_writer::end_tag('div');
                 $content .= html_writer::start_tag('div', array('class' => 'ikbfu-footer'));
                     $content .= html_writer::start_tag('div', array('class' => 'ikbfu-row')); 
