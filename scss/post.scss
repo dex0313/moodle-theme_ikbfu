@@ -129,10 +129,12 @@
           background-color: #fff !important;
           border-radius: 15px;
   
-          a {
-            color: #000;
-            font-weight: 300;
-            font-weight: 500 !important;          
+          > a {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            text-decoration: none;
+            color: inherit;
           }
   
           a:hover {
@@ -143,7 +145,7 @@
           .ikbfu-info {
             flex-direction: column;
             display: flex;
-            height: 100%;
+            flex: 1;
             justify-content: space-between;
   
             .ikbfu-row {
