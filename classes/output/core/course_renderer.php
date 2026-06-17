@@ -126,6 +126,17 @@ class course_renderer extends \core_course_renderer {
         return $content;
     }
 
+    // Lazy loading
+    protected function course_overview_files(\core_course_list_element $course): string {
+    // Получаем стандартный HTML из родителя
+    $html = parent::course_overview_files($course);
+    
+    // Добавляем loading="lazy" ко всем img внутри
+    $html = str_replace('<img ', '<img loading="lazy" ', $html);
+    
+    return $html;
+    }
+
     // private static function get_course_rating(string $course_id) : float {
     //     global $DB;
     //     $ratings = $DB->get_records('block_rate_course', ['course' => $course_id], '', 'id, rating');
