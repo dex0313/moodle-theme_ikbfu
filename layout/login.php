@@ -39,4 +39,4 @@ $templatecontext = [
     'leftinstructions' => $leftinstructions,
 ];
 
-echo $OUTPUT->render_from_template('theme_boost/login', $templatecontext);
+echo $OUTPUT->render_from_template('theme_ikbfu/login', $templatecontext);

@@ -119,4 +119,4 @@ $templatecontext = [
     'addblockbutton' => $addblockbutton
 ];
 
-echo $OUTPUT->render_from_template('theme_boost/drawers', $templatecontext);
+echo $OUTPUT->render_from_template('theme_ikbfu/drawers', $templatecontext);
