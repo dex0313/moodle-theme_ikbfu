@@ -261,44 +261,44 @@ class course_renderer extends \core_course_renderer {
      * @param int $depth depth of the category in the current tree
      * @return string
      */
-    // protected function coursecat_category_content(\coursecat_helper $chelper, $coursecat, $depth) {
-    //     $content = '';
-    //     // Subcategories
-    //     $content .= $this->coursecat_subcategories($chelper, $coursecat, $depth);
+    protected function coursecat_category_content(\coursecat_helper $chelper, $coursecat, $depth) {
+        $content = '';
+        // Subcategories
+        $content .= $this->coursecat_subcategories($chelper, $coursecat, $depth);
 
-    //     // AUTO show courses: Courses will be shown expanded if this is not nested category,
-    //     // and number of courses no bigger than $CFG->courseswithsummarieslimit.
-    //     $showcoursesauto = $chelper->get_show_courses() == self::COURSECAT_SHOW_COURSES_AUTO;
-    //     if ($showcoursesauto && $depth) {
-    //         // this is definitely collapsed mode
-    //         $chelper->set_show_courses(self::COURSECAT_SHOW_COURSES_COLLAPSED);
-    //     }
+        // AUTO show courses: Courses will be shown expanded if this is not nested category,
+        // and number of courses no bigger than $CFG->courseswithsummarieslimit.
+        $showcoursesauto = $chelper->get_show_courses() == self::COURSECAT_SHOW_COURSES_AUTO;
+        if ($showcoursesauto && $depth) {
+            // this is definitely collapsed mode
+            $chelper->set_show_courses(self::COURSECAT_SHOW_COURSES_COLLAPSED);
+        }
 
-    //     // Courses
-    //     if ($chelper->get_show_courses() > \core_course_renderer::COURSECAT_SHOW_COURSES_COUNT) {
-    //         $courses = array();
-    //         if (!$chelper->get_courses_display_option('nodisplay')) {
-    //             $courses = $coursecat->get_courses($chelper->get_courses_display_options());
-    //         }
-    //         if ($viewmoreurl = $chelper->get_courses_display_option('viewmoreurl')) {
-    //             // the option for 'View more' link was specified, display more link (if it is link to category view page, add category id)
-    //             if ($viewmoreurl->compare(new moodle_url('/course/index.php'), URL_MATCH_BASE)) {
-    //                 $chelper->set_courses_display_option('viewmoreurl', new \moodle_url($viewmoreurl, array('categoryid' => $coursecat->id)));
-    //             }
-    //         }
-    //         $content .= $this->coursecat_courses($chelper, $courses, $coursecat->get_courses_count());
-    //         $pagination = $this->get_pagination($chelper, $courses, $coursecat->get_courses_count());
-    //         $content .= html_writer::tag('div',$pagination,['class' => 'ikbfu-pagination-row']);
+        // Courses
+        if ($chelper->get_show_courses() > \core_course_renderer::COURSECAT_SHOW_COURSES_COUNT) {
+            $courses = array();
+            if (!$chelper->get_courses_display_option('nodisplay')) {
+                $courses = $coursecat->get_courses($chelper->get_courses_display_options());
+            }
+            if ($viewmoreurl = $chelper->get_courses_display_option('viewmoreurl')) {
+                // the option for 'View more' link was specified, display more link (if it is link to category view page, add category id)
+                if ($viewmoreurl->compare(new moodle_url('/course/index.php'), URL_MATCH_BASE)) {
+                    $chelper->set_courses_display_option('viewmoreurl', new \moodle_url($viewmoreurl, array('categoryid' => $coursecat->id)));
+                }
+            }
+            $content .= $this->coursecat_courses($chelper, $courses, $coursecat->get_courses_count());
+            $pagination = $this->get_pagination($chelper, $courses, $coursecat->get_courses_count());
+            $content .= html_writer::tag('div',$pagination,['class' => 'ikbfu-pagination-row']);
 
-    //     }
+        }
 
-    //     if ($showcoursesauto) {
-    //         // restore the show_courses back to AUTO
-    //         $chelper->set_show_courses(self::COURSECAT_SHOW_COURSES_AUTO);
-    //     }
+        if ($showcoursesauto) {
+            // restore the show_courses back to AUTO
+            $chelper->set_show_courses(self::COURSECAT_SHOW_COURSES_AUTO);
+        }
 
-    //     return $content;
-    // }
+        return $content;
+    }
  
      /**
      * Renders the list of courses
@@ -365,43 +365,43 @@ class course_renderer extends \core_course_renderer {
 
 
    
-    // protected function get_pagination(\coursecat_helper $chelper, $courses, $totalcount = null) {
-    //     global $CFG;
-    //     if ($totalcount === null) {
-    //         $totalcount = count($courses);
-    //     }
-    //     if (!$totalcount) {
-    //         // Courses count is cached during courses retrieval.
-    //         return '';
-    //     }
-    //     // prepare content of paging bar if it is needed
-    //     $paginationurl = $chelper->get_courses_display_option('paginationurl');
-    //     $paginationallowall = $chelper->get_courses_display_option('paginationallowall');
-    //     if ($totalcount > count($courses)) {
-    //         // there are more results that can fit on one page
-    //         if ($paginationurl) {
-    //             // the option paginationurl was specified, display pagingbar
-    //             $perpage = $chelper->get_courses_display_option('limit', $CFG->coursesperpage);
-    //             $page = $chelper->get_courses_display_option('offset') / $perpage;
-    //             $pagingbar = $this->paging_bar($totalcount, $page, $perpage,
-    //                     $paginationurl->out(false, array('perpage' => $perpage)));
-    //             if ($paginationallowall) {
-    //                 $pagingbar .= html_writer::tag('div', html_writer::link($paginationurl->out(false, array('perpage' => 'all')),
-    //                         get_string('showall', '', $totalcount)), array('class' => 'paging paging-showall'));
-    //             }
-    //         } else if ($viewmoreurl = $chelper->get_courses_display_option('viewmoreurl')) {
-    //             // the option for 'View more' link was specified, display more link
-    //             $viewmoretext = $chelper->get_courses_display_option('viewmoretext', new \lang_string('viewmore'));
-    //             $morelink = html_writer::tag('div', html_writer::link($viewmoreurl, $viewmoretext),
-    //                     array('class' => 'paging paging-morelink'));
-    //         }
-    //     } else if (($totalcount > $CFG->coursesperpage) && $paginationurl && $paginationallowall) {
-    //         // there are more than one page of results and we are in 'view all' mode, suggest to go back to paginated view mode
-    //         $pagingbar = html_writer::tag('div', html_writer::link($paginationurl->out(false, array('perpage' => $CFG->coursesperpage)),
-    //             get_string('showperpage', '', $CFG->coursesperpage)), array('class' => 'paging paging-showperpage'));
-    //     }
+    protected function get_pagination(\coursecat_helper $chelper, $courses, $totalcount = null) {
+        global $CFG;
+        if ($totalcount === null) {
+            $totalcount = count($courses);
+        }
+        if (!$totalcount) {
+            // Courses count is cached during courses retrieval.
+            return '';
+        }
+        // prepare content of paging bar if it is needed
+        $paginationurl = $chelper->get_courses_display_option('paginationurl');
+        $paginationallowall = $chelper->get_courses_display_option('paginationallowall');
+        if ($totalcount > count($courses)) {
+            // there are more results that can fit on one page
+            if ($paginationurl) {
+                // the option paginationurl was specified, display pagingbar
+                $perpage = $chelper->get_courses_display_option('limit', $CFG->coursesperpage);
+                $page = $chelper->get_courses_display_option('offset') / $perpage;
+                $pagingbar = $this->paging_bar($totalcount, $page, $perpage,
+                        $paginationurl->out(false, array('perpage' => $perpage)));
+                if ($paginationallowall) {
+                    $pagingbar .= html_writer::tag('div', html_writer::link($paginationurl->out(false, array('perpage' => 'all')),
+                            get_string('showall', '', $totalcount)), array('class' => 'paging paging-showall'));
+                }
+            } else if ($viewmoreurl = $chelper->get_courses_display_option('viewmoreurl')) {
+                // the option for 'View more' link was specified, display more link
+                $viewmoretext = $chelper->get_courses_display_option('viewmoretext', new \lang_string('viewmore'));
+                $morelink = html_writer::tag('div', html_writer::link($viewmoreurl, $viewmoretext),
+                        array('class' => 'paging paging-morelink'));
+            }
+        } else if (($totalcount > $CFG->coursesperpage) && $paginationurl && $paginationallowall) {
+            // there are more than one page of results and we are in 'view all' mode, suggest to go back to paginated view mode
+            $pagingbar = html_writer::tag('div', html_writer::link($paginationurl->out(false, array('perpage' => $CFG->coursesperpage)),
+                get_string('showperpage', '', $CFG->coursesperpage)), array('class' => 'paging paging-showperpage'));
+        }
    
       
-    //     return $pagingbar;
-    // }
+        return $pagingbar ?? $morelink ?? '';
+    }
 }
