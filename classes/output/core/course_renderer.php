@@ -78,7 +78,7 @@ class course_renderer extends \core_course_renderer {
         
         $courselink = new moodle_url('/course/view.php', ['id' => $course->id]);
         
-            $content .= html_writer::start_tag('a', array('class' => 'coursebox-link'), array('href' => $courselink));
+            $content .= html_writer::start_tag('a', ['href' => $courselink, 'class' => 'coursebox-link']);
 
                 $content .= html_writer::start_tag('div', array('class' => 'ikbfu-info'));
                     $content .= html_writer::start_tag('div', array('class' => 'ikbfu-row ikbfu-header')); 
