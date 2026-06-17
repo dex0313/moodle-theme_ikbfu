@@ -153,18 +153,27 @@ class course_renderer extends \core_course_renderer {
         return $rating;
     }
 
-    private static function get_course_authors(string $course_id) : string {
+    private static function get_course_authors(string $course_id): string {
         global $DB;
+
         $fields = $DB->get_records('customfield_field', ['shortname' => 'authors'], '', 'id');
-        $field_id = current($fields)->id;
-        $authors_records = $DB->get_records('customfield_data', ['instanceid' => $course_id, 'fieldid' => $field_id]);
-        if (empty($authors_records)) {
-            $default_authors = get_string('default_authors', 'theme_ikbfu');
-            return $default_authors;
-        } else {
-            $authors = current($authors_records);
-            return $authors->value;
+        if (empty($fields)) {
+            // Поле 'authors' не создано в системе — возвращаем заглушку
+            return get_string('default_authors', 'theme_ikbfu');
         }
+
+        $field_id = current($fields)->id;
+
+        $authors_records = $DB->get_records('customfield_data', [
+            'instanceid' => $course_id,
+            'fieldid'    => $field_id,
+        ]);
+
+        if (empty($authors_records)) {
+            return get_string('default_authors', 'theme_ikbfu');
+        }
+
+        return current($authors_records)->value;
     }
     
 
