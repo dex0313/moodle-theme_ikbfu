@@ -146,7 +146,13 @@
                     text-decoration: none;
                 }
           }
-  
+          a, 
+          a:hover, 
+          a:active, 
+          a:focus, 
+          a:visited {
+            text-decoration: none !important;
+          }
           a:hover {
             color: #000;
             text-decoration: none;
