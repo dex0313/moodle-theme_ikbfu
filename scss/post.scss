@@ -480,10 +480,3 @@ Page width incourse
 .mobilelink {
   display: none;
 }
-
-//Ширина поля ввода логина на странице входа в систему
-.loginform input#username,
-.loginform input[type="text"].form-control {
-    max-width: 600px;
-    width: 100%; // Рекомендую добавить, чтобы поля растягивались одинаково
-}
