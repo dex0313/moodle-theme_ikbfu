@@ -480,3 +480,8 @@ Page width incourse
 .mobilelink {
   display: none;
 }
+
+//Ширина поля ввода логина на странице входа в систему
+input[type=text], .uneditable-input {
+  max-width: 600px;
+}
