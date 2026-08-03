@@ -42,6 +42,81 @@ function theme_ikbfu_get_main_scss_content($theme) {
     
 }
 
+function theme_ikbfu_get_extra_scss($theme) {
+    $content = '';
+    $imageurl = $theme->setting_file_url('backgroundimage', 'backgroundimage');
+
+    // Sets the background image, and its settings.
+    if (!empty($imageurl)) {
+        $content .= '@media (min-width: 768px) {';
+        $content .= 'body { ';
+        $content .= "background-image: url('$imageurl'); background-size: cover;";
+        $content .= ' } }';
+    }
+
+    // Sets the login background image.
+    $loginbackgroundimageurl = $theme->setting_file_url('loginbackgroundimage', 'loginbackgroundimage');
+    $backgroundposition = '';
+    $isdefaultloginimage = empty($loginbackgroundimageurl);
+    if ($isdefaultloginimage) {
+        // Use the default login background image.
+        $loginbackgroundimageurl = $theme->image_url(
+            'login_background',
+            'theme',
+        );
+        // Set the default background position to center.
+        $backgroundposition = 'background-position: center;';
+    }
+    $content .= 'body.pagelayout-login #page .login-layout-left { ';
+    $content .= "background-image: url('$loginbackgroundimageurl'); ";
+    $content .= "background-size: cover; {$backgroundposition} position: relative;";
+    $content .= ' }';
+
+    // Add a watermark to indicate the image is AI generated, but only for the default image.
+    if ($isdefaultloginimage) {
+        $content .= 'body.pagelayout-login #page .login-layout-left::after {';
+        // Escape the label for use in a CSS string value: collapse newlines (which would break the CSS string)
+        // and escape single quotes and backslashes via addcslashes.
+        $ailabel = preg_replace('/[\r\n]+/', ' ', get_string('aigeneratedimage', 'theme_ikbfu'));
+        $content .= " content: '" . addcslashes($ailabel, "'\\") . "';";
+        $content .= ' position: absolute; bottom: 1rem; right: 1rem;';
+        $content .= ' color: $white;';
+        $content .= ' font-size: 0.8rem;';
+        $content .= ' text-shadow: 0 1px 2px $black;';
+        $content .= ' pointer-events: none;';
+        $content .= ' }';
+    }
+
+    // Always return the background image with the scss when we have it.
+    return !empty($theme->settings->scss) ? "{$theme->settings->scss}  \n  {$content}" : $content;
+}
+
+/**
+ * Serves any files associated with the theme settings.
+ *
+ * @param stdClass $course
+ * @param stdClass $cm
+ * @param context $context
+ * @param string $filearea
+ * @param array $args
+ * @param bool $forcedownload
+ * @param array $options
+ * @return bool
+ */
+function theme_ikbfu_pluginfile($course, $cm, $context, $filearea, $args, $forcedownload, array $options = array()) {
+    if ($context->contextlevel == CONTEXT_SYSTEM && ($filearea === 'logo' || $filearea === 'backgroundimage' ||
+        $filearea === 'loginbackgroundimage')) {
+        $theme = theme_config::load('ikbfu');
+        // By default, theme files must be cache-able by both browsers and proxies.
+        if (!array_key_exists('cacheability', $options)) {
+            $options['cacheability'] = 'public';
+        }
+        return $theme->setting_file_serve($filearea, $args, $forcedownload, $options);
+    } else {
+        send_file_not_found();
+    }
+}
+
 // function theme_ikbfu2021_get_main_scss_content($theme) {
 //     global $CFG;
 

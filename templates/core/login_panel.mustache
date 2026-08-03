@@ -15,40 +15,15 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template theme_boost/login
+    @template core/login_panel
 
-    Login page template
+    Default content for the left panel of the split-screen login layout.
+
+    When leftinstructions is provided (i.e. the site has custom auth instructions configured),
+    it fully replaces the entire default welcome section (title, tagline, and stats).
 
     Example context (json):
     {
-        "output": {
-            "doctype": "<!DOCTYPE html>",
-            "page_title": "Login page",
-            "favicon": "favicon.ico",
-            "main_content": "<h1>Headers keep HTML validators happy</h1>"
-        }
+        "leftinstructions": "<p>Welcome to our learning platform. Please log in to continue.</p>"
     }
 }}
-{{> theme_ikbfu/head }}
-
-<body {{{ bodyattributes }}}>
-{{> core/local/toast/wrapper}}
-
-<div id="page-wrapper">
-
-    {{{ output.standard_top_of_body_html }}}
-
-    <div id="page" class="mt-0">
-        {{> core/login_layout }}
-    </div>
-    {{> theme_ikbfu/footer }}
-</div>
-
-</body>
-</html>
-{{#js}}
-M.util.js_pending('theme_boost/loader');
-require(['theme_boost/loader'], function() {
-  M.util.js_complete('theme_boost/loader');
-});
-{{/js}}

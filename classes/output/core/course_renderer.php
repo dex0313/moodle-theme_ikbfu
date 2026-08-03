@@ -58,8 +58,6 @@ class course_renderer extends \core_course_renderer {
         }
 
         $course_rating = self::get_course_rating($course->id);
-        $course_rating_new = self::get_course_rating_new($course->id);
-
 
         // .coursebox
         $content .= html_writer::start_tag('div', array(
@@ -70,7 +68,7 @@ class course_renderer extends \core_course_renderer {
         $coursename = $chelper->get_course_formatted_name($course);
         
         // Сheck if the length of the course name exceeds $count
-        // If it exceeds limit the number of characters by $count and add $append
+        // If it exceeds limit the number of characters by $count add $append
         $count = 60;
         $append = '...';
         if (mb_strlen($coursename) > $count) {
@@ -80,12 +78,16 @@ class course_renderer extends \core_course_renderer {
         
         $courselink = new moodle_url('/course/view.php', ['id' => $course->id]);
         
-            $content .= html_writer::start_tag('a', array('href' => $courselink));
+            $content .= html_writer::start_tag('a', ['href' => $courselink, 'class' => 'coursebox-link']);
 
-                $content .= html_writer::start_tag('div', array('class' => 'ikbfu2021-info'));
-                    $content .= html_writer::start_tag('div', array('class' => 'ikbfu2021-row')); 
-                        //$content .= $this->course_name($chelper, $course);
+                $content .= html_writer::start_tag('div', array('class' => 'ikbfu-info'));
+                    $content .= html_writer::start_tag('div', array('class' => 'ikbfu-row ikbfu-header')); 
                         $content .= html_writer::tag('div', $coursename, array('class' => 'coursename'));
+                        $content .= $this->course_overview_files($course);
+                    $content .= html_writer::end_tag('div');
+        //            $content .= html_writer::start_tag('div', array('class' => 'ikbfu-row')); 
+                        //$content .= $this->course_name($chelper, $course);
+        //                $content .= html_writer::tag('div', $coursename, array('class' => 'coursename'));
 
                         // $content .= html_writer::start_tag('div', ['class' => 'moreinfo']);
                         // if ($chelper->get_show_courses() < self::COURSECAT_SHOW_COURSES_EXPANDED) {
@@ -100,24 +102,23 @@ class course_renderer extends \core_course_renderer {
                         // }
                         // $content .= html_writer::end_tag('div');
 
-                        $content .= $this->course_overview_files($course);
-                    $content .= html_writer::end_tag('div');
-                    $content .= html_writer::start_tag('div', array('class' => 'ikbfu2021-row')); 
+        //                $content .= $this->course_overview_files($course);
+        //            $content .= html_writer::end_tag('div');
+                $content .= html_writer::start_tag('div', array('class' => 'ikbfu-footer'));
+                    $content .= html_writer::start_tag('div', array('class' => 'ikbfu-row')); 
                         $content .= self::get_course_authors($course->id);
                         //Icon for invisible courses
                         $content .= html_writer::start_tag('i', array('class' => $course->visible ? '' : 'icon fa fa-eye-slash fa-fw'));
                         $content .= html_writer::end_tag('i');
                     $content .= html_writer::end_tag('div');
                     
-                    $content .= html_writer::start_tag('div', array('class' => 'ikbfu2021-row')); 
-                    // if ($course_rating != 0) {
-                    //     $content .= html_writer::tag('span', '&#9733; ' . number_format($course_rating, 2), ['class' => 'ikbfu2021-course-card-footer']);
-                    // }
-                    if ($course_rating_new != 0) {
-                        $content .= html_writer::tag('span', '&#9733; ' . number_format($course_rating_new, 2), ['class' => 'ikbfu2021-course-card-footer']);
+                    $content .= html_writer::start_tag('div', array('class' => 'ikbfu-row')); 
+
+                    if ($course_rating != 0) {
+                        $content .= html_writer::tag('span', '&#9733; ' . number_format($course_rating, 2), ['class' => 'ikbfu-course-card-footer']);
                     }
                     $content .= html_writer::end_tag('div');               
-                    
+                $content .= html_writer::end_tag('div');  
                 $content .= html_writer::end_tag('div');
 
             $content .= html_writer::end_tag('a');
@@ -125,23 +126,34 @@ class course_renderer extends \core_course_renderer {
         return $content;
     }
 
-    private static function get_course_rating(string $course_id) : float {
-        global $DB;
-        $ratings = $DB->get_records('block_rate_course', ['course' => $course_id], '', 'id, rating');
-
-        $rating_count = count($ratings);
-
-        if ($rating_count == 0) {
-            return 0;
-        }
-
-        $rating_sum   = array_reduce($ratings, function($carry, $item) {return $carry + $item->rating;}, 0);
-        $rating       = $rating_sum / $rating_count;
-
-        return $rating;
+    // Lazy loading
+    protected function course_overview_files(\core_course_list_element $course): string {
+    // Получаем стандартный HTML из родителя
+    $html = parent::course_overview_files($course);
+    
+    // Добавляем loading="lazy" ко всем img внутри
+    $html = str_replace('<img ', '<img loading="lazy" ', $html);
+    
+    return $html;
     }
 
-    private static function get_course_rating_new(string $course_id) : float {
+    // private static function get_course_rating(string $course_id) : float {
+    //     global $DB;
+    //     $ratings = $DB->get_records('block_rate_course', ['course' => $course_id], '', 'id, rating');
+
+    //     $rating_count = count($ratings);
+
+    //     if ($rating_count == 0) {
+    //         return 0;
+    //     }
+
+    //     $rating_sum   = array_reduce($ratings, function($carry, $item) {return $carry + $item->rating;}, 0);
+    //     $rating       = $rating_sum / $rating_count;
+
+    //     return $rating;
+    // }
+
+    private static function get_course_rating(string $course_id) : float {
         global $DB;
         $rating = $DB->get_field('tool_courserating_summary', 'avgrating', ['courseid'=> $course_id] );
 
@@ -152,18 +164,27 @@ class course_renderer extends \core_course_renderer {
         return $rating;
     }
 
-    private static function get_course_authors(string $course_id) : string {
+    private static function get_course_authors(string $course_id): string {
         global $DB;
+
         $fields = $DB->get_records('customfield_field', ['shortname' => 'authors'], '', 'id');
-        $field_id = current($fields)->id;
-        $authors_records = $DB->get_records('customfield_data', ['instanceid' => $course_id, 'fieldid' => $field_id]);
-        if (empty($authors_records)) {
-            $default_authors = get_string('default_authors', 'theme_ikbfu');
-            return $default_authors;
-        } else {
-            $authors = current($authors_records);
-            return $authors->value;
+        if (empty($fields)) {
+            // Поле 'authors' не создано в системе — возвращаем заглушку
+            return get_string('default_authors', 'theme_ikbfu');
         }
+
+        $field_id = current($fields)->id;
+
+        $authors_records = $DB->get_records('customfield_data', [
+            'instanceid' => $course_id,
+            'fieldid'    => $field_id,
+        ]);
+
+        if (empty($authors_records)) {
+            return get_string('default_authors', 'theme_ikbfu');
+        }
+
+        return current($authors_records)->value;
     }
     
 
@@ -223,7 +244,7 @@ class course_renderer extends \core_course_renderer {
     protected function course_contacts(\core_course_list_element $course) {
         $content = '';
         if ($course->has_course_contacts()) {
-            $content .= html_writer::start_tag('ul', ['class' => 'ikbfu2021-teachers']);
+            $content .= html_writer::start_tag('ul', ['class' => 'ikbfu-teachers']);
             $count = 0;
             foreach ($course->get_course_contacts() as $coursecontact) {
                 if ($count > 1) {
@@ -278,7 +299,7 @@ class course_renderer extends \core_course_renderer {
             }
             $content .= $this->coursecat_courses($chelper, $courses, $coursecat->get_courses_count());
             $pagination = $this->get_pagination($chelper, $courses, $coursecat->get_courses_count());
-            $content .= html_writer::tag('div',$pagination,['class' => 'ikbfu-2021-pagination-row']);
+            $content .= html_writer::tag('div',$pagination,['class' => 'ikbfu-pagination-row']);
 
         }
 
@@ -392,6 +413,6 @@ class course_renderer extends \core_course_renderer {
         }
    
       
-        return $pagingbar;
+        return $pagingbar ?? $morelink ?? '';
     }
 }

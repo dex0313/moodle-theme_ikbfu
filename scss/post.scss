@@ -1,9 +1,9 @@
-// Post SCSS for the theme.
+// // Post SCSS for the theme.
 
-.coursebox {
-  display: block;
-  padding: 0.5rem;
-}
+// .coursebox {
+//   display: block;
+//   padding: 0.5rem;
+// }
 
 
 .generalbox {
@@ -18,13 +18,13 @@
       background-color: #fff !important;
       border-radius: 15px;
      
-      .ikbfu2021-info {
+      .ikbfu-info {
         flex-direction: column;
         display: flex;
         height: 100%;
         justify-content: space-between;
   
-        .ikbfu2021-row {
+        .ikbfu-row {
           display: flex;
           justify-content: space-between;
   
@@ -47,10 +47,11 @@
             }
           }
   
-          .ikbfu2021-teachers {
+          .ikbfu-teachers {
             a {
               color: #000;
               font-weight: 500;
+              list-style: none;
             }
   
             a:hover {
@@ -69,10 +70,6 @@
               object-fit: cover;
             }
           }
-  
-          .ikbfu2021-teachers {
-            list-style: none;
-          }
         }
       }
     }
@@ -81,12 +78,12 @@
     }
   }
   
-  .box.py-3.generalbox.info {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: unset;
-  }
+//   .box.py-3.generalbox.info {
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//     justify-content: unset;
+//   }
   
   // Category list of courses
   
@@ -131,55 +128,91 @@
           box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.1);
           background-color: #fff !important;
           border-radius: 15px;
+
+          display: flex !important;
+          flex-direction: column !important;
   
-          a {
+          > a {
+            display: flex !important;
+            flex-direction: column !important;
+            flex: 1 1 auto !important;
+            text-decoration: none;
             color: #000;
             font-weight: 300;
-            font-weight: large !important;
-            
+                &:hover,
+                &:active,
+                &:focus {
+                    color: #000;
+                    text-decoration: none;
+                }
           }
-  
+          a, 
+          a:hover, 
+          a:active, 
+          a:focus, 
+          a:visited {
+            text-decoration: none !important;
+          }
           a:hover {
             color: #000;
             text-decoration: none;
           }
-  
-  
-          .ikbfu2021-info {
+          a:active {
+            color: #000;
+            text-decoration: none;
+          }
+
+          .coursebox-link {
+            text-decoration: none;
+            color: inherit;
+          }
+
+          .ikbfu-info {
             flex-direction: column;
             display: flex;
-            height: 100%;
+            flex: 1 1 auto;
             justify-content: space-between;
   
-            .ikbfu2021-row {
-              display: flex;
-              justify-content: space-between;
+            .ikbfu-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+            }
   
-              .coursename {
-                color: #000;
-                font-size: 1.4em;
-                line-height: 1.1;
-                letter-spacing: normal;
-                font-weight: 500;
-                margin: 0px 3px 0px 0px;
-                word-break: break-word;
-              }
-  
-              .ikbfu2021-teachers {
-                a {
-                  color: #000;
-                  font-weight: 500;
-                }
-  
-                a:hover {
-                  color: #000;
-                  text-decoration: none;
-                }
-              }
+            .ikbfu-footer {
+                margin-top: 15px;
+            }
+
+            .coursename {
+              color: #000;
+              font-size: 1.4em;
+              line-height: 1.1;
+              letter-spacing: normal;
+              font-weight: 500;
+              margin: 0px 3px 0px 0px;
+              word-break: break-word;
+
+              flex: 1;
+              min-width: 0;
+            }
+    
+            .ikbfu-teachers {
+              a {
+                    color: #000;
+                    font-weight: 500;
+                    list-style: none;
+                  }
+    
+                  a:hover {
+                    color: #000;
+                    text-decoration: none;
+                  }
+            }
   
               .courseimage {
                 width: auto !important;
-  
+                flex-shrink: 0;
+
                 img {
                   width: 100px;
                   height: 100px;
@@ -187,13 +220,9 @@
                   object-fit: cover;
                 }
               }
-  
-              .ikbfu2021-teachers {
-                list-style: none;
-              }
             }
           }
-        }
+        
         .coursebox:hover {
           box-shadow: 0px 0px 10px 3px rgba(15, 110, 254, 0.5);
         }
@@ -201,209 +230,209 @@
     }
   }
   
-.general-section-card-details .generalsecactivities .activityinstance img {
-    width: 24px!important;
-    height: 24px!important;
-}
+// .general-section-card-details .generalsecactivities .activityinstance img {
+//     width: 24px!important;
+//     height: 24px!important;
+// }
 
-.generalsecactivitiescontent {
-  .aalink {
-    display: flex;
-  }
+// .generalsecactivitiescontent {
+//   .aalink {
+//     display: flex;
+//   }
 
-  text-align: left !important;
-}
+//   text-align: left !important;
+// }
 
-.generalsecactivitiesmain {
-  align-items: flex-end;
-}
+// .generalsecactivitiesmain {
+//   align-items: flex-end;
+// }
 
-.general-section-card-details .generalsecactivities {
-  margin: 5px !important;
-}
+// .general-section-card-details .generalsecactivities {
+//   margin: 5px !important;
+// }
 
-.generalsecactivitiescontent {
-  padding: 5px !important;
-}
+// .generalsecactivitiescontent {
+//   padding: 5px !important;
+// }
 
-.general-section-card-details .generalsecactivities>div:first-child {
-  padding-top: 12px !important;
-  padding-left: 12px !important;
-  padding-bottom: 0 !important;
-  padding-right: 0 !important;
-}
+// .general-section-card-details .generalsecactivities>div:first-child {
+//   padding-top: 12px !important;
+//   padding-left: 12px !important;
+//   padding-bottom: 0 !important;
+//   padding-right: 0 !important;
+// }
 
-.general-section-card-details .coursemainimagediv, .general-section-card-details .coursemainimage {
-  height: auto;
-}
+// .general-section-card-details .coursemainimagediv, .general-section-card-details .coursemainimage {
+//   height: auto;
+// }
 
-.modified {
-  display: none;
-}
+// .modified {
+//   display: none;
+// }
 
-[data-region="activity-information"] {
-  margin-top: 10px;
-}
+// [data-region="activity-information"] {
+//   margin-top: 10px;
+// }
 
-.custom-select {
-  margin-left: 0!important;    
-}
+// .custom-select {
+//   margin-left: 0!important;    
+// }
 
-/* Frontpage */
-#page-site-index {
+// /* Frontpage */
+// #page-site-index {
 
-  [data-region="blocks-column"] {
-    float: none;
-  }
-}
+//   [data-region="blocks-column"] {
+//     float: none;
+//   }
+// }
 
-.pagelayout-frontpage {
-
-
-  [data-region="blocks-column"] {
-    width: 100%;
-    height: 100%;
-  }
+// .pagelayout-frontpage {
 
 
-  #region-main {
-    display: none;
-  }
+//   [data-region="blocks-column"] {
+//     width: 100%;
+//     height: 100%;
+//   }
 
-  #block-region-side-pre {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-  }
 
-  .card {
-    border: 0;
-    flex: 1 0 32%;
-    min-width: 300px !important;
-  }
+//   #region-main {
+//     display: none;
+//   }
 
-  .block {
-    margin-right: 1rem;   
-  }
+//   #block-region-side-pre {
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//   }
 
-  @media only screen and (max-width: 731px) {
-    h1 {
-      font-size: calc(1.044375rem + 1.7325vw);
-    }
-  }
+//   .card {
+//     border: 0;
+//     flex: 1 0 32%;
+//     min-width: 300px !important;
+//   }
+
+//   .block {
+//     margin-right: 1rem;   
+//   }
+
+//   @media only screen and (max-width: 731px) {
+//     h1 {
+//       font-size: calc(1.044375rem + 1.7325vw);
+//     }
+//   }
   
-  @media only screen and (min-width: 732px) and (max-width: 1599px){
-    h1 {
-      font-size: 2rem;
-    }
-  }
+//   @media only screen and (min-width: 732px) and (max-width: 1599px){
+//     h1 {
+//       font-size: 2rem;
+//     }
+//   }
   
-  @media only screen and (min-width: 1600px){
-    h1 {
-      font-size: 2.34375rem;
-    }
-  }
+//   @media only screen and (min-width: 1600px){
+//     h1 {
+//       font-size: 2.34375rem;
+//     }
+//   }
   
-  .frontpage-big_button
-  {
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    text-align: center;
-    border-radius: 15px;
-  }
+//   .frontpage-big_button
+//   {
+//     width: 100%;
+//     height: 100%;
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     background-size: cover;
+//     text-align: center;
+//     border-radius: 15px;
+//   }
 
-  .frontpage-big_button:hover {
-    text-decoration: none !important;
-  }
+//   .frontpage-big_button:hover {
+//     text-decoration: none !important;
+//   }
 
-  .card-body {
-    padding: 0 !important;
-  }
+//   .card-body {
+//     padding: 0 !important;
+//   }
 
-  // .p-3 {
-  //   padding: 0 !important;
-  // }
+//   // .p-3 {
+//   //   padding: 0 !important;
+//   // }
 
-  a:hover {
-    text-decoration: none !important;
-  }
+//   a:hover {
+//     text-decoration: none !important;
+//   }
 
 
-  .layer {
-    background-color: rgba(0, 0, 0, 0.4);
-    width: 100%;
-    height: 100%;
-    border-radius: 15px;
-  }
+//   .layer {
+//     background-color: rgba(0, 0, 0, 0.4);
+//     width: 100%;
+//     height: 100%;
+//     border-radius: 15px;
+//   }
 
-  .layer:hover
-  {
-    background-color: rgba(0,0,0,0.2);
-    text-decoration: none !important;
-  }
+//   .layer:hover
+//   {
+//     background-color: rgba(0,0,0,0.2);
+//     text-decoration: none !important;
+//   }
 
-  .frontpage-big_button > div > a
-  {
-    display: block;
-    height: 100%;
-    width: 100%;
-    padding-top: 20%;
-    padding-bottom: 10%;
-  }
+//   .frontpage-big_button > div > a
+//   {
+//     display: block;
+//     height: 100%;
+//     width: 100%;
+//     padding-top: 20%;
+//     padding-bottom: 10%;
+//   }
 
-  .frontpage-big_button > div > a > h1
-  {
-    color: white;
-  }
+//   .frontpage-big_button > div > a > h1
+//   {
+//     color: white;
+//   }
 
-  .frontpage-big_button > div > a:focus
-  {
-    background-color: rgba(0,0,0,0);
-  }
+//   .frontpage-big_button > div > a:focus
+//   {
+//     background-color: rgba(0,0,0,0);
+//   }
 
-  .frontpage-big_button-all_courses
-  {
-    background-image: url(https://lms.kantiana.ru/pix/fp/all_courses.jpg);
-  }
+//   .frontpage-big_button-all_courses
+//   {
+//     background-image: url(https://lms.kantiana.ru/pix/fp/all_courses.jpg);
+//   }
 
-  .frontpage-big_button-mooc
-  {
-    background-image: url(https://lms.kantiana.ru/pix/fp/mooc.jpg);
-  }
+//   .frontpage-big_button-mooc
+//   {
+//     background-image: url(https://lms.kantiana.ru/pix/fp/mooc.jpg);
+//   }
 
-  .frontpage-big_button-notifications
-  {
-    background-image: url(https://lms.kantiana.ru/pix/fp/notifications.jpg);
-  }
+//   .frontpage-big_button-notifications
+//   {
+//     background-image: url(https://lms.kantiana.ru/pix/fp/notifications.jpg);
+//   }
 
-  .frontpage-big_button-teachers
-  {
-    background-image: url(https://lms.kantiana.ru/pix/fp/teachers.jpg);
-  }
+//   .frontpage-big_button-teachers
+//   {
+//     background-image: url(https://lms.kantiana.ru/pix/fp/teachers.jpg);
+//   }
 
-  .frontpage-big_button-students
-  {
-    background-image: url(https://lms.kantiana.ru/pix/fp/students.jpg);
-  }
+//   .frontpage-big_button-students
+//   {
+//     background-image: url(https://lms.kantiana.ru/pix/fp/students.jpg);
+//   }
 
-  .frontpage-big_button-question
-  {
-    background-image: url(https://lms.kantiana.ru/pix/fp/question.jpg);
-  }
+//   .frontpage-big_button-question
+//   {
+//     background-image: url(https://lms.kantiana.ru/pix/fp/question.jpg);
+//   }
 
-  .card-text {
-    height: 100% !important;
-    width: 100%;
-  }
+//   .card-text {
+//     height: 100% !important;
+//     width: 100%;
+//   }
 
-  .no-overflow {
-    height: 100% !important;
-  }
+//   .no-overflow {
+//     height: 100% !important;
+//   }
 
-}
+// }
 
 
 
@@ -423,14 +452,13 @@
   margin-bottom: auto;
 }
 
+Page width incourse
 .pagelayout-standard #page.drawers .main-inner, body.limitedwidth #page.drawers .main-inner {
   max-width: 1088px;
 }
-
 .pagelayout-standard #page.drawers .main-inner, body.path-mod-hvp #page.drawers .main-inner {
   max-width: 1088px;
 }
-
 .pagelayout-standard #page.drawers .main-inner, body.path-mod-questionnaire #page.drawers .main-inner {
   max-width: 1088px;
 }
@@ -444,9 +472,9 @@
 }
 
 
-.col-md-9 {
-  max-width: 100%;
-}
+// .col-md-9 {
+//   max-width: 100%;
+// }
 
 //Не отображать линк на скачивание мобильного приложения
 .mobilelink {
