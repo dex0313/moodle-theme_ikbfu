@@ -117,35 +117,6 @@ function theme_ikbfu_pluginfile($course, $cm, $context, $filearea, $args, $force
     }
 }
 
-function theme_ikbfu_after_config() {
-    global $USER, $SESSION;
-
-    // Категория, куда отправляем гостей
-    $targetcategoryid = 5;
-
-    if (!isloggedin() || !isguestuser()) {
-        return;
-    }
-
-    // Чтобы не зациклить редирект и не мешать гостю ходить по сайту дальше —
-    // редиректим только один раз за сессию.
-    if (!empty($SESSION->guest_redirected)) {
-        return;
-    }
-
-    // И только когда гость реально попал на главную страницу сайта,
-    // а не куда-то ещё (например, на страницу самого логина, ajax, cron, ws и т.п.)
-    $script = $_SERVER['SCRIPT_NAME'] ?? '';
-    $iswwwroot = ($script === '/index.php' || $script === '/moodle/index.php'); // поправьте под ваш wwwroot
-
-    if (!$iswwwroot) {
-        return;
-    }
-
-    $SESSION->guest_redirected = true;
-
-    redirect(new moodle_url('/course/index.php', ['categoryid' => $targetcategoryid]));
-}
 
 // function theme_ikbfu2021_get_main_scss_content($theme) {
 //     global $CFG;
